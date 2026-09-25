@@ -1,64 +1,67 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { faqs } from "@/data/clinic";
 
-export function Faq() {
-  const [q, setQ] = useState("");
-  const [open, setOpen] = useState<number | null>(0);
+function Row({
+  f,
+  isOpen,
+  onToggle,
+  delay = 0,
+}: {
+  delay?: number;
+  f: { q: string; a: string };
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <li data-reveal="up" style={{ "--d": `${delay}ms` } as React.CSSProperties} className="border-b border-clay/25">
+      <button
+        data-cursor="cta"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="press flex w-full items-center justify-between gap-4 py-3 text-left"
+      >
+        <span className="text-[0.95rem] leading-snug">{f.q}</span>
+        <span
+          className={`grid h-6 w-6 shrink-0 place-items-center rounded-full border border-clay/40 text-sm text-clay transition-all duration-300 ${isOpen ? "rotate-45 bg-coffee text-cream" : ""}`}
+        >
+          +
+        </span>
+      </button>
+      <div
+        className="grid transition-[grid-template-rows] duration-300"
+        style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+      >
+        <div className="overflow-hidden">
+          <p className="pb-3 pr-8 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+        </div>
+      </div>
+    </li>
+  );
+}
 
-  const list = useMemo(() => {
-    const t = q.trim().toLowerCase();
-    if (!t) return faqs;
-    return faqs.filter(
-      (f) => f.q.toLowerCase().includes(t) || f.a.toLowerCase().includes(t),
-    );
-  }, [q]);
+export function Faq() {
+  const [open, setOpen] = useState<number | null>(null);
+  const half = Math.ceil(faqs.length / 2);
+  const cols = [faqs.slice(0, half), faqs.slice(half)];
 
   return (
-    <div>
-      <input
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        placeholder="Buscar uma pergunta"
-        className="w-full rounded-full border border-border bg-paper px-6 py-4 text-lg outline-none placeholder:text-muted-foreground focus:border-clay"
-      />
-      <ul className="mt-6 space-y-3">
-        {list.map((f, i) => {
-          const isOpen = open === i;
-          return (
-            <li key={f.q} className="panel px-6">
-              <button
-                data-cursor="cta"
-                onClick={() => setOpen(isOpen ? null : i)}
-                className="press flex w-full items-start justify-between gap-6 py-6 text-left"
-              >
-                <span className="font-display text-xl leading-snug md:text-2xl">
-                  {f.q}
-                </span>
-                <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-lg transition-all duration-300 ${isOpen ? "rotate-45 bg-coffee text-cream" : ""}`}
-                >
-                  +
-                </span>
-              </button>
-              <div
-                className="grid transition-[grid-template-rows] duration-500"
-                style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-              >
-                <div className="overflow-hidden">
-                  <p className="max-w-2xl pb-6 text-base leading-relaxed text-muted-foreground">
-                    {f.a}
-                  </p>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-        {list.length === 0 && (
-          <li className="py-8 text-sm text-muted-foreground">
-            Nada encontrado. Fale com a gente pelo WhatsApp.
-          </li>
-        )}
-      </ul>
+    <div className="grid gap-x-10 md:grid-cols-2">
+      {cols.map((col, c) => (
+        <ul key={c} className="self-start border-t border-clay/25">
+          {col.map((f, i) => {
+            const idx = c * half + i;
+            return (
+              <Row
+                key={f.q}
+                delay={i * 70}
+                f={f}
+                isOpen={open === idx}
+                onToggle={() => setOpen(open === idx ? null : idx)}
+              />
+            );
+          })}
+        </ul>
+      ))}
     </div>
   );
 }
