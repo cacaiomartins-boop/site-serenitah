@@ -153,9 +153,9 @@ function Home() {
 
           <ul className="mt-24 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cream/15 bg-cream/15 md:grid-cols-4">
             {["Autoconhecimento", "Sigilo integral", "Acolhimento", "Bem-estar"].map((p, i) => (
-              <li key={p} className="bg-cream/90 px-5 py-6 backdrop-blur-sm">
+              <li key={p} className="bg-cream/90 px-4 py-6 backdrop-blur-sm md:px-5">
                 <span className="font-mono text-sm text-clay">0{i + 1}</span>
-                <p className="mt-2 break-words font-display text-lg md:text-2xl">{p}</p>
+                <p className="mt-2 break-words font-display text-base md:text-2xl">{p}</p>
               </li>
             ))}
           </ul>
