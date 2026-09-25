@@ -30,7 +30,7 @@ export const therapists: Therapist[] = [
     slug: "jessica-priscila-lago",
     name: "Jéssica Priscila Lago",
     role: "Psicanalista",
-    photo: jessicaAsset.url,
+    photo: img("image-3.png"),
     index: "01",
     bio: [
       "Atende adultos em análise individual, com escuta voltada para questões de ansiedade, luto e reconstrução de projetos de vida.",
@@ -42,7 +42,7 @@ export const therapists: Therapist[] = [
     slug: "jennifer-patricia-kuhn-lago",
     name: "Jennifer Patrícia Kuhn Lago",
     role: "Psicanalista",
-    photo: jenniferAsset.url,
+    photo: img("image-4.png"),
     index: "02",
     bio: [
       "Dedica-se ao atendimento de casais e ao acompanhamento de pessoas em processos de transição — mudanças de cidade, de carreira, de fase.",
@@ -54,7 +54,7 @@ export const therapists: Therapist[] = [
     slug: "giovanna-alves-campos",
     name: "Giovanna Alves Campos",
     role: "Psicanalista",
-    photo: giovannaAsset.url,
+    photo: img("image-5.png"),
     index: "03",
     bio: [
       "Atua com transtornos alimentares e com o cuidado à parentalidade, acompanhando famílias na construção de vínculos mais leves.",
