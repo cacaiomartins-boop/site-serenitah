@@ -162,6 +162,52 @@
   &:hover { background: var(--coffee); color: var(--cream); border-color: var(--coffee); }
 }
 
+/* Light variants for buttons sitting on the dark hero backdrop */
+@utility btn-solid-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.6rem 1rem 1.8rem;
+  border-radius: 999px;
+  background: var(--clay);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 28px -14px color-mix(in oklab, var(--clay) 75%, transparent);
+  transition: background-color 300ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+  & .btn-dot {
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    background: var(--cream);
+    color: var(--coffee);
+    transition: transform 300ms ease;
+  }
+  &:hover { background: var(--wine); transform: translateY(-2px); }
+  &:hover .btn-dot { transform: rotate(-45deg); }
+  &:active { transform: scale(0.98); }
+}
+
+@utility btn-line-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--cream) 45%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  transition: all 300ms ease;
+  &:hover { background: var(--cream); color: var(--coffee); border-color: var(--cream); }
+}
+
 @utility panel {
   position: relative;
   background: var(--paper);
