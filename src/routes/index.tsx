@@ -104,7 +104,7 @@ function Home() {
           />
           {/* escuro e opaco à esquerda (texto) → revela o ambiente à direita */}
           <div className="absolute inset-0 bg-gradient-to-r from-coffee/90 via-coffee/55 via-45% to-coffee/0 max-md:from-coffee/80 max-md:via-coffee/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-coffee/85 via-coffee/10 to-coffee/45" />
+          <div className="absolute inset-0 bg-gradient-to-t from-coffee/85 via-coffee/10 to-coffee/45 max-md:from-coffee/75 max-md:via-coffee/5" />
         </div>
 
         <div className="relative mx-auto max-w-[1440px]">
@@ -155,7 +155,7 @@ function Home() {
             {["Autoconhecimento", "Sigilo integral", "Acolhimento", "Bem-estar"].map((p, i) => (
               <li key={p} className="bg-cream/90 px-5 py-6 backdrop-blur-sm">
                 <span className="font-mono text-sm text-clay">0{i + 1}</span>
-                <p className="mt-2 font-display text-xl md:text-2xl">{p}</p>
+                <p className="mt-2 break-words font-display text-lg md:text-2xl">{p}</p>
               </li>
             ))}
           </ul>
