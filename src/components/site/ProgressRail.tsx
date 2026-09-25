@@ -30,13 +30,13 @@ export function ProgressRail() {
           style={{ width: `${progress * 100}%` }}
         />
       </div>
-      <nav className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
+      <nav className="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-3 xl:flex">
         {chapters.map((c) => (
           <a
             key={c.id}
             href={`#${c.id}`}
             data-cursor="cta"
-            className="group flex items-center gap-2 label-meta press"
+            className="group flex flex-row-reverse items-center gap-2 font-mono text-xs"
           >
             <span
               className={`h-px transition-all duration-500 ${
@@ -45,12 +45,12 @@ export function ProgressRail() {
             />
             <span
               className={`transition-opacity duration-300 ${
-                active === c.id
-                  ? "text-foreground opacity-100"
+                false
+                  ? ""
                   : "opacity-0 group-hover:opacity-70"
               }`}
             >
-              {c.n} {c.label}
+              {c.n}
             </span>
           </a>
         ))}

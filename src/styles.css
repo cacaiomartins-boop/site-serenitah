@@ -33,6 +33,9 @@
   --color-wine: var(--wine);
   --color-moss: var(--moss);
   --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-blush: var(--blush);
+  --color-paper: var(--paper);
   --font-display: "Bodoni Moda", Georgia, serif;
   --font-sans: "Archivo", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -45,6 +48,9 @@
   --clay: oklch(0.55 0.11 45);
   --wine: oklch(0.36 0.12 15);
   --moss: oklch(0.32 0.04 145);
+  --sand: oklch(0.925 0.028 70);
+  --blush: oklch(0.905 0.035 45);
+  --paper: oklch(0.985 0.008 85);
 
   --background: var(--cream);
   --foreground: var(--coffee);
@@ -111,6 +117,69 @@
   }
 }
 
+@utility btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.6rem 1rem 1.8rem;
+  border-radius: 999px;
+  background: var(--coffee);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 28px -14px color-mix(in oklab, var(--coffee) 70%, transparent);
+  transition: background-color 300ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+  & .btn-dot {
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    background: var(--clay);
+    transition: transform 300ms ease;
+  }
+  &:hover { background: var(--wine); transform: translateY(-2px); }
+  &:hover .btn-dot { transform: rotate(-45deg); }
+  &:active { transform: scale(0.98); }
+}
+
+@utility btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--coffee) 35%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coffee);
+  transition: all 300ms ease;
+  &:hover { background: var(--coffee); color: var(--cream); border-color: var(--coffee); }
+}
+
+@utility panel {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--coffee) 6%, transparent), 0 24px 48px -32px color-mix(in oklab, var(--coffee) 45%, transparent);
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--paper) 70%, transparent);
+  font-size: 0.85rem;
+}
+
 /* Tactile grain overlay */
 @utility grain {
   position: relative;
@@ -128,8 +197,8 @@
 
 @utility label-meta {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted-foreground);
 }

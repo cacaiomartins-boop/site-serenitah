@@ -46,18 +46,18 @@ export function ProcessLine() {
         />
       </svg>
       {steps.map((s, i) => (
-        <div key={s.n} className="relative pt-0 md:pt-16">
+        <div key={s.n} className="relative pt-0 md:pt-20"><div className="panel h-full p-7">
           <span
-            className={`absolute left-0 top-[6px] hidden h-3 w-3 rounded-full transition-colors duration-500 md:block ${
+            className={`absolute left-0 top-[30px] hidden h-3 w-3 -translate-y-1 rounded-full transition-colors duration-500 md:block ${
               p > (i + 0.4) / 3 ? "bg-wine" : "bg-border"
             }`}
           />
-          <span className="label-meta">{s.n}</span>
-          <h3 className="mt-3 font-display text-3xl">{s.title}</h3>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
+          <span className="font-mono text-sm text-clay">{s.n}</span>
+          <h3 className="mt-3 font-display text-3xl md:text-4xl">{s.title}</h3>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground">
             {s.text}
           </p>
-        </div>
+        </div></div>
       ))}
     </div>
   );

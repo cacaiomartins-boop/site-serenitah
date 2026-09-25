@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { brand, therapists, whatsappLink } from "@/data/clinic";
-import { Cursor } from "@/components/site/Cursor";
 
 export const Route = createFileRoute("/equipe/$slug")({
   loader: ({ params }) => {
@@ -42,15 +41,14 @@ function TherapistPage() {
   }, []);
 
   return (
-    <div className="grain min-h-screen md:cursor-none">
-      <Cursor />
+    <div className="grain min-h-screen">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-[55] bg-wine transition-transform duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
         style={{ transform: curtain ? "translateY(0)" : "translateY(-100%)" }}
       />
       <header className="flex items-center justify-between px-6 py-8 md:px-16">
-        <Link to="/" data-cursor="cta" className="label-meta press">
+        <Link to="/" data-cursor="cta" className="label-meta">
           ← Serenitah
         </Link>
         <img src={brand.mark} alt="" className="h-9 w-9" />
