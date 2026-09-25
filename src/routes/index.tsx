@@ -297,18 +297,24 @@ function Home() {
         <div className="mx-auto max-w-[1440px]">
         <SectionHead n="06" label="Contato" title={<>Vamos <em className="text-wine">conversar</em>?</>} />
         <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:items-start">
-          <div className="space-y-10 lg:col-span-5 lg:pt-2">
-            <div>
+          <div className="lg:col-span-5 lg:pt-2">
+            <a href={whatsappLink("Olá! Vim pelo site da Serenitah.")} target="_blank" rel="noreferrer" className="group block border-t border-border py-5 transition-colors hover:text-wine">
               <span className="label-meta">WhatsApp</span>
-              <a href={whatsappLink("Olá! Vim pelo site da Serenitah.")} target="_blank" rel="noreferrer" className="mt-1 block font-display text-3xl transition-colors hover:text-wine md:text-4xl">{brand.phoneLabel}</a>
-            </div>
-            <div>
+              <span className="mt-1 flex items-baseline gap-3 font-display text-2xl md:text-3xl">
+                {brand.phoneLabel}
+                <span aria-hidden className="font-mono text-base text-clay opacity-0 transition-opacity group-hover:opacity-100">↗</span>
+              </span>
+            </a>
+            <a href={`mailto:${brand.email}`} target="_blank" rel="noreferrer" className="group block border-t border-border py-5 transition-colors hover:text-wine">
               <span className="label-meta">E-mail</span>
-              <a href={`mailto:${brand.email}`} className="mt-1 block break-all text-lg transition-colors hover:text-wine md:text-xl">{brand.email}</a>
-            </div>
-            <div>
+              <span className="mt-1 flex items-baseline gap-3 break-all font-display text-xl md:text-2xl">
+                {brand.email}
+                <span aria-hidden className="font-mono text-base text-clay opacity-0 transition-opacity group-hover:opacity-100">↗</span>
+              </span>
+            </a>
+            <div className="border-t border-border py-5">
               <span className="label-meta">Horário</span>
-              <p className="mt-1 text-lg md:text-xl">Seg a sex, 8h às 19h</p>
+              <p className="mt-1 font-display text-2xl md:text-3xl">Seg a sex, 8h às 19h</p>
             </div>
           </div>
           <div className="lg:col-span-7">
