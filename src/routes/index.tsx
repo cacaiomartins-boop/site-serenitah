@@ -7,7 +7,6 @@ import {
   therapists,
   whatsappLink,
 } from "@/data/clinic";
-import { Cursor } from "@/components/site/Cursor";
 import { ProgressRail } from "@/components/site/ProgressRail";
 import { Reveal, ReadingReveal } from "@/components/site/Reveal";
 import { ProcessLine } from "@/components/site/ProcessLine";
@@ -75,8 +74,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="grain min-h-screen overflow-x-hidden md:cursor-none">
-      <Cursor />
+    <div className="grain min-h-screen overflow-x-hidden">
       <ProgressRail />
       <WhatsAppFloat />
 
