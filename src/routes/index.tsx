@@ -254,7 +254,7 @@ function Home() {
       {/* ————— 05 Perguntas ————— */}
       <section id="perguntas" className="bg-sand px-6 py-28 md:px-12 lg:px-20">
         <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
             <SectionHead n="05" label="Perguntas" title={<>Antes da primeira sessão</>} />
             <p className="mt-6 text-lg text-muted-foreground">Ficou alguma dúvida? Fale com a gente pelo WhatsApp.</p>
           </div>
