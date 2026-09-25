@@ -93,62 +93,73 @@ function Home() {
       <ProgressRail />
       <WhatsAppFloat />
 
-      {/* ————— Abertura ————— */}
-      <header className="relative bg-background px-6 pb-20 pt-6 md:px-12 lg:px-20">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 border-b border-border pb-5">
-          <a href="#" className="flex items-center gap-3">
-            <img src={brand.mark} alt="" className="h-11 w-11" />
-            <span className="font-display text-xl leading-none">
-              Serenitah
-              <span className="block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-                Terapias Integradas
+      {/* ————— Abertura — ambiente ao fundo ————— */}
+      <header className="relative overflow-hidden bg-coffee px-6 pb-20 pt-6 md:px-12 lg:px-20">
+        <div className="absolute inset-0" aria-hidden>
+          <img
+            src={brand.room}
+            alt=""
+            className="h-full w-full object-cover"
+            style={{ filter: "sepia(0.22) saturate(0.9)" }}
+          />
+          {/* escuro e opaco à esquerda (texto) → revela o ambiente à direita */}
+          <div className="absolute inset-0 bg-gradient-to-r from-coffee/95 via-coffee/70 via-50% to-coffee/0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-coffee/85 via-coffee/10 to-coffee/45" />
+        </div>
+
+        <div className="relative mx-auto max-w-[1440px]">
+          <div className="flex items-center justify-between gap-6 border-b border-cream/20 pb-5">
+            <a href="#" className="flex items-center gap-3">
+              <img src={brand.mark} alt="" className="h-11 w-11" />
+              <span className="font-display text-xl leading-none text-cream">
+                Serenitah
+                <span className="block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-cream/60">
+                  Terapias Integradas
+                </span>
               </span>
-            </span>
-          </a>
-          <nav className="hidden items-center gap-7 lg:flex">
-            {chapters.map((c) => (
-              <a key={c.id} href={`#${c.id}`} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                {c.label}
-              </a>
+            </a>
+            <nav className="hidden items-center gap-7 lg:flex">
+              {chapters.map((c) => (
+                <a key={c.id} href={`#${c.id}`} className="text-sm text-cream/70 transition-colors hover:text-cream">
+                  {c.label}
+                </a>
+              ))}
+            </nav>
+            <a href="#contato" className="btn-line-light">Agendar</a>
+          </div>
+
+          <div className="mt-16 grid items-end gap-12 md:mt-24 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <span className="chip"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
+              <h1 className="mt-8 text-[14vw] leading-[0.9] tracking-[-0.03em] text-cream md:text-[10vw] lg:text-[6.6vw]">
+                Reencontrar o <em className="text-clay">equilíbrio</em> leva tempo.
+              </h1>
+              <p className="mt-8 max-w-lg text-lg leading-relaxed text-cream/75 md:text-xl">
+                Escuta profissional para quem quer entender a própria história sem pressa. Atendimento individual e de casais, presencial ou online.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a href="#contato" className="btn-solid-light">Agendar primeira sessão <Arrow /></a>
+                <a href="#cuidados" className="btn-line-light">Ver cuidados</a>
+              </div>
+            </div>
+            <div className="relative lg:col-span-5">
+              <div className="panel max-w-[16rem] p-5 lg:ml-auto">
+                <span className="label-meta">Horário</span>
+                <p className="mt-2 font-display text-2xl leading-tight">Seg a sex, 8h às 19h</p>
+                <p className="mt-1 text-sm text-muted-foreground">Presencial e online</p>
+              </div>
+            </div>
+          </div>
+
+          <ul className="mt-24 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cream/15 bg-cream/15 md:grid-cols-4">
+            {["Autoconhecimento", "Sigilo integral", "Acolhimento", "Bem-estar"].map((p, i) => (
+              <li key={p} className="bg-cream/90 px-5 py-6 backdrop-blur-sm">
+                <span className="font-mono text-sm text-clay">0{i + 1}</span>
+                <p className="mt-2 font-display text-xl md:text-2xl">{p}</p>
+              </li>
             ))}
-          </nav>
-          <a href="#contato" className="btn-line">Agendar</a>
+          </ul>
         </div>
-
-        <div className="mx-auto mt-14 grid max-w-[1440px] items-end gap-12 md:mt-20 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <span className="chip"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
-            <h1 className="mt-8 text-[14vw] leading-[0.9] tracking-[-0.03em] md:text-[10vw] lg:text-[6.6vw]">
-              Reencontrar o <em className="text-wine">equilíbrio</em> leva tempo.
-            </h1>
-            <p className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Escuta profissional para quem quer entender a própria história sem pressa. Atendimento individual e de casais, presencial ou online.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a href="#contato" className="btn-solid">Agendar primeira sessão <Arrow /></a>
-              <a href="#cuidados" className="btn-line">Ver cuidados</a>
-            </div>
-          </div>
-          <div className="relative lg:col-span-5">
-            <div className="mask-arch overflow-hidden bg-sand">
-              <img src={brand.room} alt="Consultório da Serenitah em Brasília" className="ken h-[420px] w-full object-cover lg:h-[560px]" style={{ filter: "sepia(0.22) saturate(0.9)" }} />
-            </div>
-            <div className="panel absolute -bottom-8 -left-4 max-w-[15rem] p-5 md:-left-10">
-              <span className="label-meta">Horário</span>
-              <p className="mt-2 font-display text-2xl leading-tight">Seg a sex, 8h às 19h</p>
-              <p className="mt-1 text-sm text-muted-foreground">Presencial e online</p>
-            </div>
-          </div>
-        </div>
-
-        <ul className="mx-auto mt-24 grid max-w-[1440px] grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
-          {["Autoconhecimento", "Sigilo integral", "Acolhimento", "Bem-estar"].map((p, i) => (
-            <li key={p} className="bg-paper px-5 py-6">
-              <span className="font-mono text-sm text-clay">0{i + 1}</span>
-              <p className="mt-2 font-display text-xl md:text-2xl">{p}</p>
-            </li>
-          ))}
-        </ul>
       </header>
 
       {/* ————— 01 Sobre ————— */}
