@@ -277,15 +277,18 @@ function Home() {
       </section>
 
       {/* ————— 05 Perguntas ————— */}
-      <section id="perguntas" className="bg-sand px-6 py-28 md:px-12 lg:px-20">
-        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-12">
-          <div className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
-            <SectionHead n="05" label="Perguntas" title={<>Antes da primeira sessão</>} />
-            <p className="mt-6 text-lg text-muted-foreground">Ficou alguma dúvida? Fale com a gente pelo WhatsApp.</p>
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6">
+      <section id="perguntas" className="bg-sand px-6 py-24 md:px-12 md:py-28 lg:px-20">
+        <div className="mx-auto max-w-[1440px]">
+          <SectionHead n="05" label="Perguntas" title={<>Antes da primeira sessão</>} />
+          <div className="mt-12 max-w-4xl">
             <Faq />
           </div>
+          <p className="mt-10 max-w-4xl text-lg text-muted-foreground">
+            Ficou alguma dúvida?{" "}
+            <a href={whatsappLink("Olá! Tenho uma dúvida sobre o atendimento.")} target="_blank" rel="noreferrer" className="font-normal text-foreground underline decoration-clay/50 underline-offset-4 transition-colors hover:text-wine hover:decoration-wine">
+              Fale com a gente pelo WhatsApp.
+            </a>
+          </p>
         </div>
       </section>
 
