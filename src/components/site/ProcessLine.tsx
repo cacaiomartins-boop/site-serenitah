@@ -46,9 +46,9 @@ export function ProcessLine() {
         />
       </svg>
       {steps.map((s, i) => (
-        <div key={s.n} className="relative pt-0 md:pt-16"><div className="panel h-full p-7">
+        <div key={s.n} className="relative pt-0 md:pt-20"><div className="panel h-full p-7">
           <span
-            className={`absolute left-0 top-[6px] hidden h-3 w-3 rounded-full transition-colors duration-500 md:block ${
+            className={`absolute left-0 top-[30px] hidden h-3 w-3 -translate-y-1 rounded-full transition-colors duration-500 md:block ${
               p > (i + 0.4) / 3 ? "bg-wine" : "bg-border"
             }`}
           />

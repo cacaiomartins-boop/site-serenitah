@@ -131,7 +131,7 @@ function Home() {
           </div>
           <div className="relative lg:col-span-5">
             <div className="mask-arch overflow-hidden bg-sand">
-              <img src={brand.room} alt="Consultório da Serenitah em Brasília" className="ken h-[52vh] w-full object-cover lg:h-[66vh]" style={{ filter: "sepia(0.22) saturate(0.9)" }} />
+              <img src={brand.room} alt="Consultório da Serenitah em Brasília" className="ken h-[420px] w-full object-cover lg:h-[560px]" style={{ filter: "sepia(0.22) saturate(0.9)" }} />
             </div>
             <div className="panel absolute -bottom-8 -left-4 max-w-[15rem] p-5 md:-left-10">
               <span className="label-meta">Horário</span>
@@ -157,7 +157,7 @@ function Home() {
           <div className="lg:col-span-5">
             <SectionHead n="01" label="Quem somos" title={<>Estamos aqui para <em className="text-clay">cuidar</em> de você.</>} />
             <div className="mt-10 overflow-hidden mask-organic">
-              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[42vh] w-full object-cover" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
+              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[380px] w-full object-cover" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
             </div>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 lg:pt-16">
@@ -204,7 +204,7 @@ function Home() {
                 </div>
                 <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : "lg:col-start-8"}`}>
                   <div className={`overflow-hidden ${i % 2 ? "mask-organic" : "mask-arch"}`}>
-                    <img src={i % 2 ? brand.session : brand.room} alt={s.title} loading="lazy" className="ken h-[32vh] w-full object-cover md:h-[40vh]" style={{ filter: "sepia(0.24) saturate(0.88)" }} />
+                    <img src={i % 2 ? brand.session : brand.room} alt={s.title} loading="lazy" className="ken h-[300px] w-full object-cover md:h-[360px]" style={{ filter: "sepia(0.24) saturate(0.88)" }} />
                   </div>
                 </div>
               </article>
@@ -236,7 +236,7 @@ function Home() {
           {therapists.map((t) => (
             <Link key={t.slug} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[80vw] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-4 transition-colors hover:bg-cream/10 md:w-[30vw]">
               <div className="overflow-hidden rounded-2xl bg-sand mask-arch">
-                <img src={t.photo} alt={t.name} loading="lazy" draggable={false} className="ken h-[46vh] w-full object-cover object-top" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
+                <img src={t.photo} alt={t.name} loading="lazy" draggable={false} className="ken h-[420px] w-full object-cover object-top" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
               </div>
               <div className="flex items-end justify-between gap-4 px-2 pb-2 pt-5">
                 <div>
