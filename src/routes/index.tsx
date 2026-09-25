@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import {
   brand,
   chapters,
@@ -65,145 +64,120 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-function Home() {
-  const [y, setY] = useState(0);
-  useEffect(() => {
-    const onScroll = () => setY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+const Arrow = () => (
+  <span className="btn-dot" aria-hidden>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  </span>
+);
 
+function SectionHead({ n, label, title, className = "" }: { n: string; label: string; title: React.ReactNode; className?: string }) {
+  return (
+    <div className={className}>
+      <div className="flex items-center gap-4">
+        <span className="font-mono text-sm text-clay">{n}</span>
+        <span className="h-px w-12 bg-clay/60" />
+        <span className="label-meta">{label}</span>
+      </div>
+      <h2 className="mt-6 text-5xl leading-[0.95] tracking-[-0.02em] md:text-7xl lg:text-[5.5vw]">
+        {title}
+      </h2>
+    </div>
+  );
+}
+
+function Home() {
   return (
     <div className="grain min-h-screen overflow-x-hidden">
       <ProgressRail />
       <WhatsAppFloat />
 
       {/* ————— Abertura ————— */}
-      <header className="relative px-6 pb-24 pt-8 md:px-16 lg:px-24">
-        <div className="flex items-center justify-between">
-          <img src={brand.mark} alt="Serenitah" className="h-10 w-10" />
-          <a
-            href="#contato"
-            data-cursor="cta"
-            className="label-meta press border-b border-wine pb-1 text-foreground"
-          >
-            Agendar sessão
-          </a>
-        </div>
-
-        <div className="relative mt-16 md:mt-24">
-          <span className="label-meta">Psicanálise · Brasília — DF</span>
-          <h1
-            className="mt-6 max-w-[16ch] text-[15vw] leading-[0.86] tracking-[-0.02em] md:text-[9.5vw]"
-            style={{ transform: `translateY(${y * -0.06}px)` }}
-          >
-            Reencontrar o <em className="text-wine">equilíbrio</em> leva tempo.
-          </h1>
-
-          <div className="mt-10 grid gap-10 md:grid-cols-12">
-            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground md:col-span-4 md:col-start-1">
-              Terapia profissional para quem quer entender a própria história
-              sem pressa. Atendimento individual, de casais, presencial ou
-              online.
-            </p>
-            <div
-              className="relative md:col-span-7 md:col-start-6"
-              style={{ transform: `translateY(${y * -0.12}px)` }}
-            >
-              <div
-                data-cursor="grow"
-                data-cursor-label="o espaço"
-                className="mask-arch overflow-hidden"
-              >
-                <img
-                  src={brand.room}
-                  alt="Consultório da Serenitah em Brasília"
-                  className="ken h-[46vh] w-full object-cover md:h-[62vh]"
-                  style={{ filter: "sepia(0.22) saturate(0.9) contrast(1.02)" }}
-                />
-              </div>
-              <span className="label-meta absolute -left-6 top-6 hidden rotate-180 [writing-mode:vertical-rl] md:block">
-                SHN · Asa Norte
+      <header className="relative bg-background px-6 pb-20 pt-6 md:px-12 lg:px-20">
+        <div className="flex items-center justify-between gap-6 border-b border-border pb-5">
+          <a href="#" className="flex items-center gap-3">
+            <img src={brand.mark} alt="" className="h-11 w-11" />
+            <span className="font-display text-xl leading-none">
+              Serenitah
+              <span className="block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                Terapias Integradas
               </span>
-            </div>
-          </div>
-
-          {/* pilares como anotações */}
-          <ul className="mt-12 flex flex-wrap gap-x-10 gap-y-3 md:mt-0 md:max-w-xs">
-            {[
-              "Auto conhecimento",
-              "Confidencial",
-              "Acolhimento",
-              "Bem-estar",
-            ].map((p, i) => (
-              <li key={p} className="label-meta">
-                <sup className="mr-1 text-clay">{i + 1}</sup>
-                {p}
-              </li>
-            ))}
-          </ul>
-
-          <nav className="mt-20 flex flex-wrap gap-x-8 gap-y-2 border-t border-border pt-5">
+            </span>
+          </a>
+          <nav className="hidden items-center gap-7 lg:flex">
             {chapters.map((c) => (
-              <a
-                key={c.id}
-                href={`#${c.id}`}
-                data-cursor="cta"
-                className="label-meta press hover:text-foreground"
-              >
-                {c.n} {c.label}
+              <a key={c.id} href={`#${c.id}`} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                {c.label}
               </a>
             ))}
           </nav>
+          <a href="#contato" className="btn-line">Agendar</a>
         </div>
+
+        <div className="mt-14 grid items-end gap-12 md:mt-20 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <span className="chip"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
+            <h1 className="mt-8 text-[14vw] leading-[0.9] tracking-[-0.03em] md:text-[10vw] lg:text-[6.6vw]">
+              Reencontrar o <em className="text-wine">equilíbrio</em> leva tempo.
+            </h1>
+            <p className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl">
+              Escuta profissional para quem quer entender a própria história sem pressa. Atendimento individual e de casais, presencial ou online.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a href="#contato" className="btn-solid">Agendar primeira sessão <Arrow /></a>
+              <a href="#cuidados" className="btn-line">Ver cuidados</a>
+            </div>
+          </div>
+          <div className="relative lg:col-span-5">
+            <div className="mask-arch overflow-hidden bg-sand">
+              <img src={brand.room} alt="Consultório da Serenitah em Brasília" className="ken h-[52vh] w-full object-cover lg:h-[66vh]" style={{ filter: "sepia(0.22) saturate(0.9)" }} />
+            </div>
+            <div className="panel absolute -bottom-8 -left-4 max-w-[15rem] p-5 md:-left-10">
+              <span className="label-meta">Horário</span>
+              <p className="mt-2 font-display text-2xl leading-tight">Seg a sex, 8h às 19h</p>
+              <p className="mt-1 text-sm text-muted-foreground">Presencial e online</p>
+            </div>
+          </div>
+        </div>
+
+        <ul className="mt-24 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
+          {["Autoconhecimento", "Sigilo integral", "Acolhimento", "Bem-estar"].map((p, i) => (
+            <li key={p} className="bg-paper px-5 py-6">
+              <span className="font-mono text-sm text-clay">0{i + 1}</span>
+              <p className="mt-2 font-display text-xl md:text-2xl">{p}</p>
+            </li>
+          ))}
+        </ul>
       </header>
 
       {/* ————— 01 Sobre ————— */}
-      <section id="sobre" className="px-6 py-28 md:px-16 lg:px-24">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-3">
-            <span className="label-meta">01 — Quem somos</span>
-            <ul className="mt-8 space-y-2">
-              {[
-                "Análise Individual",
-                "Saúde Mental e Bem-estar",
-                "Psicoterapia Especializada",
-                "Suporte Emocional",
-              ].map((t) => (
-                <li
-                  key={t}
-                  className="label-meta border-l border-clay pl-3 normal-case tracking-normal"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
+      <section id="sobre" className="bg-sand px-6 py-28 md:px-12 lg:px-20">
+        <div className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <SectionHead n="01" label="Quem somos" title={<>Estamos aqui para <em className="text-clay">cuidar</em> de você.</>} />
+            <div className="mt-10 overflow-hidden mask-organic">
+              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[42vh] w-full object-cover" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
+            </div>
           </div>
-          <div className="md:col-span-8 md:col-start-5">
+          <div className="lg:col-span-6 lg:col-start-7 lg:pt-16">
             <ReadingReveal
-              text="Estamos aqui para cuidar de você. A Serenitah é uma clínica de psicanálise em Brasília dedicada à escuta: do que se diz, do que se cala e do que se repete."
-              className="font-display text-3xl leading-[1.2] md:text-5xl"
+              text="A Serenitah é uma clínica de psicanálise em Brasília dedicada à escuta: do que se diz, do que se cala e do que se repete."
+              className="font-display text-3xl leading-[1.25] md:text-4xl"
             />
             <Reveal delay={120}>
-              <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                Atendemos adultos, casais, adolescentes e famílias, no
-                consultório da Asa Norte ou online. Cada processo é conduzido
-                por psicanalistas, com sigilo integral e sem fórmulas prontas —
-                o percurso é construído no ritmo de quem o vive.
+              <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+                Atendemos adultos, casais, adolescentes e famílias, no consultório da Asa Norte ou online. Cada processo é conduzido por psicanalistas, com sigilo integral e sem fórmulas prontas — o percurso é construído no ritmo de quem o vive.
               </p>
             </Reveal>
-            <Reveal delay={220}>
-              <div
-                data-cursor="grow"
-                className="mt-12 overflow-hidden mask-organic"
-              >
-                <img
-                  src={brand.session}
-                  alt="Atendimento na Serenitah"
-                  loading="lazy"
-                  className="ken h-[40vh] w-full object-cover md:h-[52vh]"
-                  style={{ filter: "sepia(0.25) saturate(0.85)" }}
-                />
+            <Reveal delay={200}>
+              <div className="mt-10 grid gap-3 sm:grid-cols-2">
+                {["Análise individual", "Saúde mental e bem-estar", "Psicoterapia especializada", "Suporte emocional"].map((t) => (
+                  <div key={t} className="panel flex items-center gap-3 px-5 py-4">
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-clay" />
+                    <span className="text-base">{t}</span>
+                  </div>
+                ))}
               </div>
             </Reveal>
           </div>
@@ -211,54 +185,26 @@ function Home() {
       </section>
 
       {/* ————— 02 Cuidados ————— */}
-      <section
-        id="cuidados"
-        className="bg-secondary/60 px-6 py-28 md:px-16 lg:px-24"
-      >
-        <span className="label-meta">02 — Cuidados</span>
-        <h2 className="mt-4 max-w-[12ch] text-[12vw] leading-[0.9] md:text-[7vw]">
-          Como podemos te ajudar?
-        </h2>
-        <div className="mt-20 space-y-24">
+      <section id="cuidados" className="bg-background px-6 py-28 md:px-12 lg:px-20">
+        <div className="flex flex-wrap items-end justify-between gap-8">
+          <SectionHead n="02" label="Cuidados" title={<>Como podemos<br />te ajudar?</>} />
+          <p className="max-w-sm text-lg text-muted-foreground">Cada cuidado parte da mesma base: tempo, escuta e sigilo.</p>
+        </div>
+        <div className="mt-16 space-y-6">
           {services.map((s, i) => (
             <Reveal key={s.n}>
-              <article
-                className={`grid items-end gap-6 md:grid-cols-12 ${
-                  i % 2 ? "md:[direction:rtl]" : ""
-                }`}
-              >
-                <div className="md:col-span-5 md:[direction:ltr]">
-                  <span className="label-meta">{s.n}</span>
-                  <h3 className="mt-2 font-display text-4xl md:text-5xl">
-                    {s.title}
-                  </h3>
-                  <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                    {s.text}
-                  </p>
-                  <a
-                    href={whatsappLink(
-                      `Olá! Gostaria de saber mais sobre ${s.title}.`,
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="cta"
-                    className="label-meta press mt-6 inline-block border-b border-wine pb-1 text-foreground"
-                  >
-                    Conversar sobre isso
+              <article className={`panel grid items-center gap-8 overflow-hidden p-6 md:p-8 lg:grid-cols-12 ${i % 2 ? "bg-blush/50" : ""}`}>
+                <div className={`lg:col-span-6 ${i % 2 ? "lg:order-2 lg:col-start-7" : ""}`}>
+                  <span className="font-mono text-sm text-clay">{s.n}</span>
+                  <h3 className="mt-3 text-4xl leading-tight md:text-5xl">{s.title}</h3>
+                  <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">{s.text}</p>
+                  <a href={whatsappLink(`Olá! Gostaria de saber mais sobre ${s.title}.`)} target="_blank" rel="noreferrer" className="btn-line mt-8">
+                    Conversar sobre isso →
                   </a>
                 </div>
-                <div className="md:col-span-6 md:col-start-7 md:[direction:ltr]">
-                  <div
-                    data-cursor="grow"
-                    className={`overflow-hidden ${i % 2 ? "mask-organic" : "mask-arch"}`}
-                  >
-                    <img
-                      src={i % 2 ? brand.session : brand.room}
-                      alt={s.title}
-                      loading="lazy"
-                      className="ken h-[34vh] w-full object-cover md:h-[46vh]"
-                      style={{ filter: "sepia(0.24) saturate(0.88)" }}
-                    />
+                <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : "lg:col-start-8"}`}>
+                  <div className={`overflow-hidden ${i % 2 ? "mask-organic" : "mask-arch"}`}>
+                    <img src={i % 2 ? brand.session : brand.room} alt={s.title} loading="lazy" className="ken h-[32vh] w-full object-cover md:h-[40vh]" style={{ filter: "sepia(0.24) saturate(0.88)" }} />
                   </div>
                 </div>
               </article>
@@ -268,49 +214,37 @@ function Home() {
       </section>
 
       {/* ————— 03 Processo ————— */}
-      <section id="processo" className="px-6 py-28 md:px-16 lg:px-24">
-        <span className="label-meta">03 — Processo</span>
-        <h2 className="mb-20 mt-4 font-display text-[10vw] leading-none md:text-[6vw]">
-          Conheça nosso processo
-        </h2>
+      <section id="processo" className="bg-blush/60 px-6 py-28 md:px-12 lg:px-20">
+        <SectionHead n="03" label="Processo" title="Conheça nosso processo" className="mb-16" />
         <ProcessLine />
       </section>
 
       {/* ————— 04 Equipe ————— */}
-      <section id="equipe" className="px-6 py-28 md:pl-16 lg:pl-24">
-        <div className="flex items-end justify-between pr-6 md:pr-16">
+      <section id="equipe" className="bg-coffee px-6 py-28 text-cream md:px-12 lg:px-20">
+        <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <span className="label-meta">04 — Equipe</span>
-            <h2 className="mt-4 font-display text-[11vw] leading-none md:text-[6vw]">
-              Quem escuta
-            </h2>
+            <div className="flex items-center gap-4">
+              <span className="font-mono text-sm text-clay">04</span>
+              <span className="h-px w-12 bg-clay/60" />
+              <span className="font-mono text-[0.78rem] uppercase tracking-[0.18em] text-cream/60">Equipe</span>
+            </div>
+            <h2 className="mt-6 text-5xl leading-[0.95] md:text-7xl lg:text-[5.5vw]">Quem <em className="text-clay">escuta</em></h2>
           </div>
-          <span className="label-meta hidden md:block">arraste →</span>
+          <span className="font-mono text-sm uppercase tracking-[0.18em] text-cream/60">Arraste para o lado →</span>
         </div>
         <DragRow className="mt-14">
           {therapists.map((t) => (
-            <Link
-              key={t.slug}
-              to="/equipe/$slug"
-              params={{ slug: t.slug }}
-              data-cursor="grow"
-              data-cursor-label="ver mais"
-              className="group w-[78vw] shrink-0 snap-start md:w-[34vw]"
-            >
-              <div className="overflow-hidden bg-card mask-arch">
-                <img
-                  src={t.photo}
-                  alt={t.name}
-                  loading="lazy"
-                  draggable={false}
-                  className="ken h-[52vh] w-full object-cover object-top"
-                  style={{ filter: "sepia(0.2) saturate(0.9)" }}
-                />
+            <Link key={t.slug} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[80vw] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-4 transition-colors hover:bg-cream/10 md:w-[30vw]">
+              <div className="overflow-hidden rounded-2xl bg-sand mask-arch">
+                <img src={t.photo} alt={t.name} loading="lazy" draggable={false} className="ken h-[46vh] w-full object-cover object-top" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
               </div>
-              <div className="mt-4 transition-transform duration-500 group-hover:-translate-y-1">
-                <span className="label-meta">{t.index}</span>
-                <h3 className="font-display text-2xl">{t.name}</h3>
-                <p className="label-meta mt-1">{t.role}</p>
+              <div className="flex items-end justify-between gap-4 px-2 pb-2 pt-5">
+                <div>
+                  <span className="font-mono text-sm text-clay">{t.index}</span>
+                  <h3 className="mt-1 text-2xl leading-tight md:text-3xl">{t.name}</h3>
+                  <p className="mt-1 text-sm text-cream/60">{t.role}</p>
+                </div>
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-cream/30 transition-all group-hover:bg-clay group-hover:border-clay">→</span>
               </div>
             </Link>
           ))}
@@ -318,87 +252,55 @@ function Home() {
       </section>
 
       {/* ————— 05 Perguntas ————— */}
-      <section
-        id="perguntas"
-        className="bg-secondary/60 px-6 py-28 md:px-16 lg:px-24"
-      >
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-3">
-            <span className="label-meta">05 — Perguntas</span>
-            <h2 className="mt-4 font-display text-5xl leading-none">
-              Antes da
-              <br />
-              primeira
-              <br />
-              sessão
-            </h2>
+      <section id="perguntas" className="bg-sand px-6 py-28 md:px-12 lg:px-20">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <SectionHead n="05" label="Perguntas" title={<>Antes da primeira sessão</>} />
+            <p className="mt-6 text-lg text-muted-foreground">Ficou alguma dúvida? Fale com a gente pelo WhatsApp.</p>
           </div>
-          <div className="md:col-span-8 md:col-start-5">
+          <div className="lg:col-span-7 lg:col-start-6">
             <Faq />
           </div>
         </div>
       </section>
 
       {/* ————— 06 Contato ————— */}
-      <section id="contato" className="px-6 py-28 md:px-16 lg:px-24">
-        <span className="label-meta">06 — Contato</span>
-        <h2 className="mt-4 text-[13vw] leading-none md:text-[8vw]">
-          Vamos conversar?
-        </h2>
-        <div className="mt-16 grid gap-16 md:grid-cols-12">
-          <div className="space-y-8 md:col-span-4">
-            <div>
-              <span className="label-meta">Telefone</span>
-              <a
-                href={whatsappLink("Olá! Vim pelo site da Serenitah.")}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="cta"
-                className="block font-display text-3xl"
-              >
-                {brand.phoneLabel}
-              </a>
-            </div>
-            <div>
+      <section id="contato" className="bg-background px-6 py-28 md:px-12 lg:px-20">
+        <SectionHead n="06" label="Contato" title={<>Vamos <em className="text-wine">conversar</em>?</>} />
+        <div className="mt-16 grid gap-8 lg:grid-cols-12">
+          <div className="space-y-4 lg:col-span-5">
+            <a href={whatsappLink("Olá! Vim pelo site da Serenitah.")} target="_blank" rel="noreferrer" className="panel block p-6 transition-transform hover:-translate-y-1">
+              <span className="label-meta">WhatsApp</span>
+              <span className="mt-2 block font-display text-3xl">{brand.phoneLabel}</span>
+            </a>
+            <a href={`mailto:${brand.email}`} className="panel block p-6 transition-transform hover:-translate-y-1">
               <span className="label-meta">E-mail</span>
-              <a
-                href={`mailto:${brand.email}`}
-                data-cursor="cta"
-                className="block break-all text-lg"
-              >
-                {brand.email}
-              </a>
+              <span className="mt-2 block break-all text-lg">{brand.email}</span>
+            </a>
+            <div className="panel overflow-hidden">
+              <div className="p-6">
+                <span className="label-meta">Endereço</span>
+                <p className="mt-2 text-base leading-relaxed">{brand.address}</p>
+              </div>
+              <iframe title="Mapa — Serenitah, Asa Norte, Brasília" loading="lazy" className="h-52 w-full grayscale-[0.4]" src="https://www.google.com/maps?q=SHN%20Asa%20Norte%20Bras%C3%ADlia%2070701-040&output=embed" />
             </div>
-            <div>
-              <span className="label-meta">Endereço</span>
-              <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-                {brand.address}
-              </p>
-            </div>
-            <iframe
-              title="Mapa — Serenitah, Asa Norte, Brasília"
-              loading="lazy"
-              className="h-56 w-full border border-border grayscale-[0.4]"
-              src="https://www.google.com/maps?q=SHN%20Asa%20Norte%20Bras%C3%ADlia%2070701-040&output=embed"
-            />
           </div>
-          <div className="md:col-span-7 md:col-start-6">
+          <div className="panel bg-blush/40 p-6 md:p-10 lg:col-span-7">
+            <h3 className="text-3xl md:text-4xl">Envie uma mensagem</h3>
+            <p className="mb-8 mt-2 text-muted-foreground">Respondemos em horário comercial.</p>
             <ContactForm />
           </div>
         </div>
       </section>
 
-      <footer className="flex flex-wrap items-center justify-between gap-6 border-t border-border px-6 py-10 md:px-16 lg:px-24">
-        <img
-          src={brand.mark}
-          alt="Serenitah"
-          data-cursor="cta"
-          className="h-10 w-10 transition-transform duration-1000 hover:scale-110"
-        />
-        <p className="label-meta">
-          © {new Date().getFullYear()} {brand.name} — Todos os direitos
-          reservados
-        </p>
+      <footer className="bg-coffee px-6 py-12 text-cream md:px-12 lg:px-20">
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
+            <span className="font-display text-xl">{brand.name}</span>
+          </div>
+          <p className="text-sm text-cream/60">© {new Date().getFullYear()} — Todos os direitos reservados</p>
+        </div>
       </footer>
     </div>
   );

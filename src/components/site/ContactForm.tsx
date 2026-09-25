@@ -2,7 +2,7 @@ import { useState } from "react";
 import { brand, whatsappLink } from "@/data/clinic";
 
 const field =
-  "w-full border-b border-border bg-transparent py-3 text-base outline-none placeholder:text-muted-foreground focus:border-wine transition-colors";
+  "mt-2 w-full rounded-xl border border-border bg-paper px-4 py-3 text-base outline-none placeholder:text-muted-foreground focus:border-clay transition-colors";
 
 export function ContactForm() {
   const [form, setForm] = useState({
@@ -68,14 +68,13 @@ export function ContactForm() {
         <button
           type="submit"
           data-cursor="cta"
-          className="press bg-wine px-8 py-4 text-sm uppercase tracking-[0.2em] text-cream"
-          style={{ fontFamily: "var(--font-mono)" }}
+          className="btn-solid"
         >
-          Enviar mensagem
+          Enviar pelo WhatsApp <span className="btn-dot">→</span>
         </button>
         <a
           href={`mailto:${brand.email}`}
-          className="label-meta underline underline-offset-4"
+          className="text-sm text-muted-foreground underline underline-offset-4"
         >
           ou escreva para {brand.email}
         </a>

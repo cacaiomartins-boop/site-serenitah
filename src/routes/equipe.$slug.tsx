@@ -48,7 +48,7 @@ function TherapistPage() {
         style={{ transform: curtain ? "translateY(0)" : "translateY(-100%)" }}
       />
       <header className="flex items-center justify-between px-6 py-8 md:px-16">
-        <Link to="/" data-cursor="cta" className="label-meta press">
+        <Link to="/" data-cursor="cta" className="label-meta">
           ← Serenitah
         </Link>
         <img src={brand.mark} alt="" className="h-9 w-9" />

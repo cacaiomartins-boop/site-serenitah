@@ -19,13 +19,13 @@ export function Faq() {
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder="Buscar uma pergunta"
-        className="w-full border-b border-border bg-transparent pb-3 text-lg outline-none placeholder:text-muted-foreground focus:border-wine"
+        className="w-full rounded-full border border-border bg-paper px-6 py-4 text-lg outline-none placeholder:text-muted-foreground focus:border-clay"
       />
-      <ul className="mt-10">
+      <ul className="mt-6 space-y-3">
         {list.map((f, i) => {
           const isOpen = open === i;
           return (
-            <li key={f.q} className="border-b border-border">
+            <li key={f.q} className="panel px-6">
               <button
                 data-cursor="cta"
                 onClick={() => setOpen(isOpen ? null : i)}
@@ -35,7 +35,7 @@ export function Faq() {
                   {f.q}
                 </span>
                 <span
-                  className={`label-meta mt-2 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-lg transition-all duration-300 ${isOpen ? "rotate-45 bg-coffee text-cream" : ""}`}
                 >
                   +
                 </span>
@@ -45,7 +45,7 @@ export function Faq() {
                 style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
               >
                 <div className="overflow-hidden">
-                  <p className="max-w-2xl pb-6 text-sm leading-relaxed text-muted-foreground">
+                  <p className="max-w-2xl pb-6 text-base leading-relaxed text-muted-foreground">
                     {f.a}
                   </p>
                 </div>
