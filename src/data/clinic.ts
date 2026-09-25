@@ -1,11 +1,4 @@
-import jessicaAsset from "@/assets/image-3.png.asset.json";
-import jenniferAsset from "@/assets/image-4.png.asset.json";
-import giovannaAsset from "@/assets/image-5.png.asset.json";
-import roomAsset from "@/assets/image-2.png.asset.json";
-import sessionAsset from "@/assets/image.png.asset.json";
-import markAsset from "@/assets/image-6.png.asset.json";
-import teamOfficeAsset from "@/assets/serenitah-equipe-consultorio.png.asset.json";
-import teamMeetingAsset from "@/assets/serenitah-equipe-reuniao.png.asset.json";
+const img = (name: string) => `/img/${name}`;
 
 export const brand = {
   name: "Serenitah Terapias Integradas",
@@ -15,11 +8,11 @@ export const brand = {
   email: "serenitah.terapias@gmail.com",
   address:
     "Edifício Fusion Work e Live, SHN, Asa Norte, Brasília — DF, 70701-040",
-  mark: markAsset.url,
-  room: roomAsset.url,
-  session: sessionAsset.url,
-  teamOffice: teamOfficeAsset.url,
-  teamMeeting: teamMeetingAsset.url,
+  mark: img("image-6.png"),
+  room: img("image-2.png"),
+  session: img("image.png"),
+  teamOffice: img("serenitah-equipe-consultorio.png"),
+  teamMeeting: img("serenitah-equipe-reuniao.png"),
 };
 
 export type Therapist = {
@@ -37,7 +30,7 @@ export const therapists: Therapist[] = [
     slug: "jessica-priscila-lago",
     name: "Jéssica Priscila Lago",
     role: "Psicanalista",
-    photo: jessicaAsset.url,
+    photo: img("image-3.png"),
     index: "01",
     bio: [
       "Atende adultos em análise individual, com escuta voltada para questões de ansiedade, luto e reconstrução de projetos de vida.",
@@ -49,7 +42,7 @@ export const therapists: Therapist[] = [
     slug: "jennifer-patricia-kuhn-lago",
     name: "Jennifer Patrícia Kuhn Lago",
     role: "Psicanalista",
-    photo: jenniferAsset.url,
+    photo: img("image-4.png"),
     index: "02",
     bio: [
       "Dedica-se ao atendimento de casais e ao acompanhamento de pessoas em processos de transição — mudanças de cidade, de carreira, de fase.",
@@ -61,7 +54,7 @@ export const therapists: Therapist[] = [
     slug: "giovanna-alves-campos",
     name: "Giovanna Alves Campos",
     role: "Psicanalista",
-    photo: giovannaAsset.url,
+    photo: img("image-5.png"),
     index: "03",
     bio: [
       "Atua com transtornos alimentares e com o cuidado à parentalidade, acompanhando famílias na construção de vínculos mais leves.",
@@ -81,7 +74,7 @@ export const services = [
     n: "01",
     title: "Psicanálise",
     text: "Um percurso de escuta contínua, onde aquilo que se repete pode finalmente ser dito de outro modo. Atendimento individual e de casais, presencial em Brasília ou online.",
-    photo: teamOfficeAsset.url,
+    photo: brand.teamOffice,
     photoAlt: "Profissionais da Serenitah no consultório",
     photoPosition: "center 40%",
   },
@@ -89,7 +82,7 @@ export const services = [
     n: "02",
     title: "Home Saúde",
     text: "Acompanhamento no ambiente da própria casa, para quem tem mobilidade reduzida ou precisa de continuidade no cuidado sem deslocamento.",
-    photo: roomAsset.url,
+    photo: brand.room,
     photoAlt: "Ambiente de atendimento da Serenitah",
     photoPosition: "center",
   },
@@ -97,7 +90,7 @@ export const services = [
     n: "03",
     title: "Transtornos Alimentares",
     text: "Cuidado especializado para a relação com o corpo e com a comida, em trabalho conjunto com a rede de saúde quando necessário.",
-    photo: teamMeetingAsset.url,
+    photo: brand.teamMeeting,
     photoAlt: "Equipe Serenitah em reunião de trabalho",
     photoPosition: "center 45%",
   },
@@ -105,7 +98,7 @@ export const services = [
     n: "04",
     title: "Apoio à Parentalidade",
     text: "Um espaço para pais e responsáveis pensarem suas escolhas, os impasses do dia a dia e o vínculo com os filhos, sem julgamento.",
-    photo: sessionAsset.url,
+    photo: brand.session,
     photoAlt: "Conversa profissional na Serenitah",
     photoPosition: "center 42%",
   },
