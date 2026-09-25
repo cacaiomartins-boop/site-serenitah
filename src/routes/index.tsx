@@ -94,7 +94,7 @@ function Home() {
       <WhatsAppFloat />
 
       {/* ————— Abertura — ambiente ao fundo ————— */}
-      <header className="relative overflow-hidden bg-coffee px-6 pb-20 pt-6 md:px-12 lg:px-20">
+      <header className="relative overflow-hidden bg-coffee px-6 pb-12 pt-6 md:px-12 md:pb-16 lg:px-20">
         <div className="absolute inset-0" aria-hidden>
           <img
             src={brand.room}
@@ -128,34 +128,43 @@ function Home() {
             <a href="#contato" className="btn-line-light">Agendar</a>
           </div>
 
-          <div className="mt-16 grid items-end gap-12 md:mt-24 lg:grid-cols-12">
+          <div className="mt-10 grid items-end gap-10 md:mt-14 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <span className="chip"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
               <h1 className="mt-8 text-[14vw] leading-[0.9] tracking-[-0.03em] text-cream md:text-[10vw] lg:text-[6.6vw]">
                 Reencontrar o <em className="text-clay">equilíbrio</em> leva tempo.
               </h1>
-              <p className="mt-8 max-w-lg text-lg leading-relaxed text-cream/75 md:text-xl">
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-cream/75 md:text-xl">
                 Escuta profissional para quem quer entender a própria história sem pressa. Atendimento individual e de casais, presencial ou online.
               </p>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a href="#contato" className="btn-solid-light">Agendar primeira sessão <Arrow /></a>
                 <a href="#cuidados" className="btn-line-light">Ver cuidados</a>
               </div>
             </div>
             <div className="relative lg:col-span-5">
-              <div className="panel max-w-[16rem] p-5 lg:ml-auto">
-                <span className="label-meta">Horário</span>
-                <p className="mt-2 font-display text-2xl leading-tight">Seg a sex, 8h às 19h</p>
-                <p className="mt-1 text-sm text-muted-foreground">Presencial e online</p>
+              <div className="max-w-[17rem] overflow-hidden rounded-2xl border border-cream/30 bg-cream/95 shadow-[0_30px_70px_-35px_rgba(0,0,0,0.65)] backdrop-blur-sm lg:ml-auto">
+                <div className="h-1.5 bg-gradient-to-r from-clay via-wine to-clay" />
+                <div className="p-6">
+                  <div className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-wine" />
+                    <span className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-clay">Horário</span>
+                  </div>
+                  <p className="mt-3 font-display text-[1.7rem] leading-[1.08]">Seg a sex,<br />8h às 19h</p>
+                  <p className="mt-3 border-t border-border pt-3 text-sm text-muted-foreground">Presencial e online</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <ul className="mt-24 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cream/15 bg-cream/15 md:grid-cols-4">
+          <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cream/15 bg-cream/15 md:mt-16 md:grid-cols-4">
             {["Autoconhecimento", "Sigilo integral", "Acolhimento", "Bem-estar"].map((p, i) => (
-              <li key={p} className="bg-cream/90 px-4 py-6 backdrop-blur-sm md:px-5">
-                <span className="font-mono text-sm text-clay">0{i + 1}</span>
-                <p className="mt-2 break-words font-display text-base md:text-2xl">{p}</p>
+              <li key={p} className="group bg-cream/90 px-4 py-5 backdrop-blur-sm transition-colors hover:bg-cream md:px-6 md:py-6">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-clay">0{i + 1}</span>
+                  <span className="h-px flex-1 bg-clay/30 transition-colors group-hover:bg-clay/60" aria-hidden />
+                </div>
+                <p className="mt-2 break-words font-display text-base md:text-xl lg:text-2xl">{p}</p>
               </li>
             ))}
           </ul>
