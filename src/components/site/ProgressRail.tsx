@@ -9,7 +9,7 @@ export function ProgressRail() {
     const onScroll = () => {
       const h = document.documentElement;
       setProgress(h.scrollTop / Math.max(h.scrollHeight - h.clientHeight, 1));
-      let current = chapters[0].id;
+      let current = chapters[0]?.id ?? "sobre";
       for (const c of chapters) {
         const el = document.getElementById(c.id);
         if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4)
