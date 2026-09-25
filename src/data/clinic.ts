@@ -1,11 +1,4 @@
-import jessicaAsset from "@/assets/image-3.png.asset.json";
-import jenniferAsset from "@/assets/image-4.png.asset.json";
-import giovannaAsset from "@/assets/image-5.png.asset.json";
-import roomAsset from "@/assets/image-2.png.asset.json";
-import sessionAsset from "@/assets/image.png.asset.json";
-import markAsset from "@/assets/image-6.png.asset.json";
-import teamOfficeAsset from "@/assets/serenitah-equipe-consultorio.png.asset.json";
-import teamMeetingAsset from "@/assets/serenitah-equipe-reuniao.png.asset.json";
+const img = (name: string) => `/img/${name}`;
 
 export const brand = {
   name: "Serenitah Terapias Integradas",
@@ -15,11 +8,11 @@ export const brand = {
   email: "serenitah.terapias@gmail.com",
   address:
     "Edifício Fusion Work e Live, SHN, Asa Norte, Brasília — DF, 70701-040",
-  mark: markAsset.url,
-  room: roomAsset.url,
-  session: sessionAsset.url,
-  teamOffice: teamOfficeAsset.url,
-  teamMeeting: teamMeetingAsset.url,
+  mark: img("image-6.png"),
+  room: img("image-2.png"),
+  session: img("image.png"),
+  teamOffice: img("serenitah-equipe-consultorio.png"),
+  teamMeeting: img("serenitah-equipe-reuniao.png"),
 };
 
 export type Therapist = {
