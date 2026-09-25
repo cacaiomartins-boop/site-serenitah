@@ -11,7 +11,6 @@ import { Reveal, ReadingReveal } from "@/components/site/Reveal";
 import { ProcessLine } from "@/components/site/ProcessLine";
 import { DragRow } from "@/components/site/DragRow";
 import { Faq } from "@/components/site/Faq";
-import { ContactForm } from "@/components/site/ContactForm";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 
 export const Route = createFileRoute("/")({
@@ -294,28 +293,27 @@ function Home() {
       <section id="contato" className="bg-background px-6 py-28 md:px-12 lg:px-20">
         <div className="mx-auto max-w-[1440px]">
         <SectionHead n="06" label="Contato" title={<>Vamos <em className="text-wine">conversar</em>?</>} />
-        <div className="mt-16 grid gap-8 lg:grid-cols-12">
-          <div className="space-y-4 lg:col-span-5">
-            <a href={whatsappLink("Olá! Vim pelo site da Serenitah.")} target="_blank" rel="noreferrer" className="panel block p-6 transition-transform hover:-translate-y-1">
+        <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:items-start">
+          <div className="space-y-10 lg:col-span-5 lg:pt-2">
+            <div>
               <span className="label-meta">WhatsApp</span>
-              <span className="mt-2 block font-display text-3xl">{brand.phoneLabel}</span>
-            </a>
-            <a href={`mailto:${brand.email}`} className="panel block p-6 transition-transform hover:-translate-y-1">
+              <a href={whatsappLink("Olá! Vim pelo site da Serenitah.")} target="_blank" rel="noreferrer" className="mt-1 block font-display text-3xl transition-colors hover:text-wine md:text-4xl">{brand.phoneLabel}</a>
+            </div>
+            <div>
               <span className="label-meta">E-mail</span>
-              <span className="mt-2 block break-all text-lg">{brand.email}</span>
-            </a>
-            <div className="panel overflow-hidden">
-              <div className="p-6">
-                <span className="label-meta">Endereço</span>
-                <p className="mt-2 text-base leading-relaxed">{brand.address}</p>
-              </div>
-              <iframe title="Mapa — Serenitah, Asa Norte, Brasília" loading="lazy" className="h-52 w-full grayscale-[0.4]" src="https://www.google.com/maps?q=SHN%20Asa%20Norte%20Bras%C3%ADlia%2070701-040&output=embed" />
+              <a href={`mailto:${brand.email}`} className="mt-1 block break-all text-lg transition-colors hover:text-wine md:text-xl">{brand.email}</a>
+            </div>
+            <div>
+              <span className="label-meta">Horário</span>
+              <p className="mt-1 text-lg md:text-xl">Seg a sex, 8h às 19h</p>
             </div>
           </div>
-          <div className="panel bg-blush/40 p-6 md:p-10 lg:col-span-7">
-            <h3 className="text-3xl md:text-4xl">Envie uma mensagem</h3>
-            <p className="mb-8 mt-2 text-muted-foreground">Respondemos em horário comercial.</p>
-            <ContactForm />
+          <div className="lg:col-span-7">
+            <a href="https://www.google.com/maps?q=SHN%20Asa%20Norte%20Bras%C3%ADlia%2070701-040" target="_blank" rel="noreferrer" className="group inline-flex flex-wrap items-baseline gap-x-3 transition-colors hover:text-wine">
+              <span className="label-meta">Endereço</span>
+              <span className="font-display text-xl underline decoration-clay/40 underline-offset-4 transition-colors group-hover:decoration-wine md:text-2xl">{brand.address}</span>
+            </a>
+            <iframe title="Mapa — Serenitah, Asa Norte, Brasília" loading="lazy" className="mt-4 h-72 w-full grayscale-[0.4] md:h-[26rem]" src="https://www.google.com/maps?q=SHN%20Asa%20Norte%20Bras%C3%ADlia%2070701-040&output=embed" />
           </div>
         </div>
         </div>
