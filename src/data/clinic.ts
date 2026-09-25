@@ -4,6 +4,8 @@ import giovannaAsset from "@/assets/image-5.png.asset.json";
 import roomAsset from "@/assets/image-2.png.asset.json";
 import sessionAsset from "@/assets/image.png.asset.json";
 import markAsset from "@/assets/image-6.png.asset.json";
+import teamOfficeAsset from "@/assets/serenitah-equipe-consultorio.png.asset.json";
+import teamMeetingAsset from "@/assets/serenitah-equipe-reuniao.png.asset.json";
 
 export const brand = {
   name: "Serenitah Terapias Integradas",
@@ -16,6 +18,8 @@ export const brand = {
   mark: markAsset.url,
   room: roomAsset.url,
   session: sessionAsset.url,
+  teamOffice: teamOfficeAsset.url,
+  teamMeeting: teamMeetingAsset.url,
 };
 
 export type Therapist = {
@@ -77,21 +81,33 @@ export const services = [
     n: "01",
     title: "Psicanálise",
     text: "Um percurso de escuta contínua, onde aquilo que se repete pode finalmente ser dito de outro modo. Atendimento individual e de casais, presencial em Brasília ou online.",
+    photo: teamOfficeAsset.url,
+    photoAlt: "Profissionais da Serenitah no consultório",
+    photoPosition: "center 40%",
   },
   {
     n: "02",
     title: "Home Saúde",
     text: "Acompanhamento no ambiente da própria casa, para quem tem mobilidade reduzida ou precisa de continuidade no cuidado sem deslocamento.",
+    photo: roomAsset.url,
+    photoAlt: "Ambiente de atendimento da Serenitah",
+    photoPosition: "center",
   },
   {
     n: "03",
     title: "Transtornos Alimentares",
     text: "Cuidado especializado para a relação com o corpo e com a comida, em trabalho conjunto com a rede de saúde quando necessário.",
+    photo: teamMeetingAsset.url,
+    photoAlt: "Equipe Serenitah em reunião de trabalho",
+    photoPosition: "center 45%",
   },
   {
     n: "04",
     title: "Apoio à Parentalidade",
     text: "Um espaço para pais e responsáveis pensarem suas escolhas, os impasses do dia a dia e o vínculo com os filhos, sem julgamento.",
+    photo: sessionAsset.url,
+    photoAlt: "Conversa profissional na Serenitah",
+    photoPosition: "center 42%",
   },
 ];
 

@@ -107,6 +107,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   h1,
@@ -237,6 +238,13 @@
   transition: transform 1800ms cubic-bezier(0.22, 1, 0.36, 1);
   &:hover {
     transform: scale(1.07);
+  }
+}
+
+@media (max-width: 767px) {
+  .label-meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
   }
 }
 

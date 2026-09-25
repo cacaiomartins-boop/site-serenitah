@@ -95,7 +95,7 @@ function Home() {
 
       {/* ————— Abertura ————— */}
       <header className="relative bg-background px-6 pb-20 pt-6 md:px-12 lg:px-20">
-        <div className="flex items-center justify-between gap-6 border-b border-border pb-5">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 border-b border-border pb-5">
           <a href="#" className="flex items-center gap-3">
             <img src={brand.mark} alt="" className="h-11 w-11" />
             <span className="font-display text-xl leading-none">
@@ -115,7 +115,7 @@ function Home() {
           <a href="#contato" className="btn-line">Agendar</a>
         </div>
 
-        <div className="mt-14 grid items-end gap-12 md:mt-20 lg:grid-cols-12">
+        <div className="mx-auto mt-14 grid max-w-[1440px] items-end gap-12 md:mt-20 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <span className="chip"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
             <h1 className="mt-8 text-[14vw] leading-[0.9] tracking-[-0.03em] md:text-[10vw] lg:text-[6.6vw]">
@@ -141,7 +141,7 @@ function Home() {
           </div>
         </div>
 
-        <ul className="mt-24 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
+        <ul className="mx-auto mt-24 grid max-w-[1440px] grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
           {["Autoconhecimento", "Sigilo integral", "Acolhimento", "Bem-estar"].map((p, i) => (
             <li key={p} className="bg-paper px-5 py-6">
               <span className="font-mono text-sm text-clay">0{i + 1}</span>
@@ -153,11 +153,11 @@ function Home() {
 
       {/* ————— 01 Sobre ————— */}
       <section id="sobre" className="bg-sand px-6 py-28 md:px-12 lg:px-20">
-        <div className="grid gap-14 lg:grid-cols-12">
+        <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHead n="01" label="Quem somos" title={<>Estamos aqui para <em className="text-clay">cuidar</em> de você.</>} />
             <div className="mt-10 overflow-hidden mask-organic">
-              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[380px] w-full object-cover" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
+              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[380px] w-full object-cover object-[center_42%]" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
             </div>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 lg:pt-16">
@@ -186,6 +186,7 @@ function Home() {
 
       {/* ————— 02 Cuidados ————— */}
       <section id="cuidados" className="bg-background px-6 py-28 md:px-12 lg:px-20">
+        <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <SectionHead n="02" label="Cuidados" title={<>Como podemos<br />te ajudar?</>} />
           <p className="max-w-sm text-lg text-muted-foreground">Cada cuidado parte da mesma base: tempo, escuta e sigilo.</p>
@@ -204,23 +205,27 @@ function Home() {
                 </div>
                 <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : "lg:col-start-8"}`}>
                   <div className={`overflow-hidden ${i % 2 ? "mask-organic" : "mask-arch"}`}>
-                    <img src={i % 2 ? brand.session : brand.room} alt={s.title} loading="lazy" className="ken h-[300px] w-full object-cover md:h-[360px]" style={{ filter: "sepia(0.24) saturate(0.88)" }} />
+                    <img src={s.photo} alt={s.photoAlt} loading="lazy" className="ken h-[300px] w-full object-cover md:h-[360px]" style={{ filter: "sepia(0.18) saturate(0.9)", objectPosition: s.photoPosition }} />
                   </div>
                 </div>
               </article>
             </Reveal>
           ))}
         </div>
+        </div>
       </section>
 
       {/* ————— 03 Processo ————— */}
       <section id="processo" className="bg-blush/60 px-6 py-28 md:px-12 lg:px-20">
+        <div className="mx-auto max-w-[1440px]">
         <SectionHead n="03" label="Processo" title="Conheça nosso processo" className="mb-16" />
         <ProcessLine />
+        </div>
       </section>
 
       {/* ————— 04 Equipe ————— */}
       <section id="equipe" className="bg-coffee px-6 py-28 text-cream md:px-12 lg:px-20">
+        <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <div className="flex items-center gap-4">
@@ -234,7 +239,7 @@ function Home() {
         </div>
         <DragRow className="mt-14">
           {therapists.map((t) => (
-            <Link key={t.slug} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[80vw] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-4 transition-colors hover:bg-cream/10 md:w-[30vw]">
+            <Link key={t.slug} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[80vw] max-w-[28rem] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-4 transition-colors hover:bg-cream/10 md:w-[30vw]">
               <div className="overflow-hidden rounded-2xl bg-sand mask-arch">
                 <img src={t.photo} alt={t.name} loading="lazy" draggable={false} className="ken h-[420px] w-full object-cover object-top" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
               </div>
@@ -249,11 +254,12 @@ function Home() {
             </Link>
           ))}
         </DragRow>
+        </div>
       </section>
 
       {/* ————— 05 Perguntas ————— */}
       <section id="perguntas" className="bg-sand px-6 py-28 md:px-12 lg:px-20">
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-12">
           <div className="lg:sticky lg:top-24 lg:col-span-4 lg:self-start">
             <SectionHead n="05" label="Perguntas" title={<>Antes da primeira sessão</>} />
             <p className="mt-6 text-lg text-muted-foreground">Ficou alguma dúvida? Fale com a gente pelo WhatsApp.</p>
@@ -266,6 +272,7 @@ function Home() {
 
       {/* ————— 06 Contato ————— */}
       <section id="contato" className="bg-background px-6 py-28 md:px-12 lg:px-20">
+        <div className="mx-auto max-w-[1440px]">
         <SectionHead n="06" label="Contato" title={<>Vamos <em className="text-wine">conversar</em>?</>} />
         <div className="mt-16 grid gap-8 lg:grid-cols-12">
           <div className="space-y-4 lg:col-span-5">
@@ -291,10 +298,11 @@ function Home() {
             <ContactForm />
           </div>
         </div>
+        </div>
       </section>
 
       <footer className="bg-coffee px-6 py-12 text-cream md:px-12 lg:px-20">
-        <div className="flex flex-wrap items-center justify-between gap-6">
+        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
             <span className="font-display text-xl">{brand.name}</span>
