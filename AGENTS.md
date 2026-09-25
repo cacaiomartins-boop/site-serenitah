@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep editorial page content inside a 1440px maximum-width frame while section color bands remain full width, so wide screens retain intentional alignment.

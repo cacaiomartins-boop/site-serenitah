@@ -47,14 +47,14 @@ function TherapistPage() {
         className="pointer-events-none fixed inset-0 z-[55] bg-wine transition-transform duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)]"
         style={{ transform: curtain ? "translateY(0)" : "translateY(-100%)" }}
       />
-      <header className="flex items-center justify-between px-6 py-8 md:px-16">
+      <header className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-8 md:px-16">
         <Link to="/" data-cursor="cta" className="label-meta">
           ← Serenitah
         </Link>
         <img src={brand.mark} alt="" className="h-9 w-9" />
       </header>
 
-      <main className="grid gap-12 px-6 pb-28 md:grid-cols-12 md:px-16">
+      <main className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 pb-28 md:grid-cols-12 md:px-16">
         <div className="md:col-span-5">
           <div data-cursor="grow" className="overflow-hidden bg-card mask-arch">
             <img
@@ -71,7 +71,7 @@ function TherapistPage() {
             {t.name}
           </h1>
           <p className="label-meta mt-3">{t.role}</p>
-          <div className="mt-8 space-y-5 max-w-xl text-sm leading-relaxed text-muted-foreground">
+          <div className="mt-8 max-w-xl space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
             {t.bio.map((p) => (
               <p key={p}>{p}</p>
             ))}
@@ -89,9 +89,7 @@ function TherapistPage() {
             )}
             target="_blank"
             rel="noreferrer"
-            data-cursor="cta"
-            className="press mt-12 inline-block bg-wine px-8 py-4 text-sm uppercase tracking-[0.2em] text-cream"
-            style={{ fontFamily: "var(--font-mono)" }}
+            className="btn-solid mt-12"
           >
             Agendar com {t.name.split(" ")[0]}
           </a>
