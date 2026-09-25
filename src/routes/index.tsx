@@ -103,7 +103,7 @@ function Home() {
             style={{ filter: "sepia(0.22) saturate(0.9)" }}
           />
           {/* escuro e opaco à esquerda (texto) → revela o ambiente à direita */}
-          <div className="absolute inset-0 bg-gradient-to-r from-coffee/95 via-coffee/70 via-50% to-coffee/0" />
+          <div className="absolute inset-0 bg-gradient-to-r from-coffee/90 via-coffee/55 via-45% to-coffee/0 max-md:from-coffee/80 max-md:via-coffee/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-coffee/85 via-coffee/10 to-coffee/45" />
         </div>
 
