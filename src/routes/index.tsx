@@ -172,7 +172,7 @@ function Home() {
           <div className="mt-auto max-md:my-auto grid items-end gap-10 pb-[8.6rem] pt-10 md:grid-cols-12 md:items-center md:gap-8 md:px-6 md:pb-0 md:pt-12 lg:px-14">
             <div className="max-md:text-center md:col-span-7">
               <span style={d(200)} className="enter chip max-md:border-cream/30 max-md:bg-cream/90 max-md:px-3 max-md:py-1.5 max-md:text-xs"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
-              <h1 style={d(320)} className="enter max-md:[text-shadow:0_2px_18px_rgba(20,8,4,0.6)] mt-4 text-[10.2vw] max-md:text-[11.2vw] leading-[0.9] tracking-[-0.03em] text-cream md:mt-6 md:text-[6.2vw] lg:text-[5.2vw]">
+              <h1 style={d(320)} className="enter max-md:[text-shadow:0_2px_18px_rgba(20,8,4,0.6)] mt-4 text-[10.2vw] max-md:font-[Fraunces,Georgia,serif] max-md:font-medium max-md:text-[10.6vw] max-md:leading-[1] leading-[0.9] tracking-[-0.03em] text-cream md:mt-6 md:text-[6.2vw] lg:text-[5.2vw]">
                 Reencontrar o <em className="text-[color-mix(in_oklab,var(--clay)_72%,white)] [text-shadow:0_2px_28px_rgba(20,8,4,0.55)]">equilíbrio</em> leva tempo.
               </h1>
               <p style={d(520)} className="enter mt-3 max-w-lg text-[0.86rem] max-md:mx-auto leading-relaxed max-md:leading-[1.3] text-cream/80 max-md:text-cream max-md:[text-shadow:0_1px_12px_rgba(20,8,4,0.7)] md:mt-5 md:text-[1.05rem]">
@@ -444,13 +444,52 @@ function Home() {
         </div>
       </section>
 
-      <footer data-reveal="fade" className="bg-coffee px-5 pb-24 pt-8 text-cream md:px-12 md:pb-8 lg:px-20">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-6">
-          <div className="flex items-center gap-3">
+      <footer data-reveal="fade" className="bg-coffee px-5 pb-14 pt-7 text-cream md:px-12 md:pb-8 md:pt-12 lg:px-20">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="flex flex-col items-center gap-3 text-center md:hidden">
             <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
             <span className="font-display text-xl">{brand.name}</span>
+            <p className="text-sm text-cream/60">© {new Date().getFullYear()} — Todos os direitos reservados</p>
           </div>
-          <p className="text-sm text-cream/60">© {new Date().getFullYear()} — Todos os direitos reservados</p>
+          <div className="hidden md:block">
+            <div className="grid gap-10 md:grid-cols-12">
+              <div className="md:col-span-4">
+                <div className="flex items-center gap-3">
+                  <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
+                  <span className="font-display text-xl">{brand.name}</span>
+                </div>
+                <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">Clínica de psicanálise na Asa Norte, Brasília. Escuta profissional, com sigilo e sem pressa.</p>
+              </div>
+              <nav className="md:col-span-2">
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-cream/50">Navegação</p>
+                <ul className="mt-4 space-y-2 text-sm text-cream/75">
+                  {chapters.map((c) => (
+                    <li key={c.id}><a href={`#${c.id}`} className="transition-colors hover:text-cream">{c.label}</a></li>
+                  ))}
+                </ul>
+              </nav>
+              <div className="md:col-span-3">
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-cream/50">Contato</p>
+                <ul className="mt-4 space-y-2 text-sm text-cream/75">
+                  <li><a href={whatsappLink("Olá! Vim pelo site da Serenitah.")} target="_blank" rel="noreferrer" className="transition-colors hover:text-cream">WhatsApp {brand.phoneLabel}</a></li>
+                  <li><a href={`mailto:${brand.email}`} className="break-all transition-colors hover:text-cream">{brand.email}</a></li>
+                  <li>{brand.address}</li>
+                </ul>
+              </div>
+              <div className="md:col-span-3">
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-cream/50">Atendimento</p>
+                <ul className="mt-4 space-y-2 text-sm text-cream/75">
+                  <li>Seg a sex, 8h às 19h</li>
+                  <li>Presencial e online</li>
+                  <li>Sessões de 50 minutos</li>
+                </ul>
+              </div>
+            </div>
+            <div className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-cream/15 pt-5 text-xs text-cream/50">
+              <p>© {new Date().getFullYear()} {brand.name} — Todos os direitos reservados</p>
+              <p>{therapists.map((t) => `${t.name} · ${t.crp}`).join("  |  ")}</p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
