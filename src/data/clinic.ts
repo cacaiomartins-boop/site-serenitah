@@ -15,14 +15,21 @@ export const brand = {
   teamMeeting: img("serenitah-equipe-reuniao.png"),
 };
 
+export type TimelineItem = { period?: string; text: string };
+
 export type Therapist = {
   slug: string;
   name: string;
   role: string;
+  crp: string;
   photo: string;
   index: string;
   bio: string[];
   focus: string[];
+  education: TimelineItem[];
+  trajectory?: { title: string; items: TimelineItem[] };
+  services?: string[];
+  languages?: string[];
 };
 
 export const therapists: Therapist[] = [
@@ -30,42 +37,88 @@ export const therapists: Therapist[] = [
     slug: "jessica-priscila-lago",
     name: "Jéssica Priscila Lago",
     role: "Psicanalista",
+    crp: "CRP 01/20947",
     photo: img("image-3.png"),
     index: "01",
     bio: [
-      "Atende adultos em análise individual, com escuta voltada para questões de ansiedade, luto e reconstrução de projetos de vida.",
-      "Trabalha o tempo de cada pessoa: a sessão é um espaço sem pressa, onde a palavra encontra lugar antes da solução.",
+      "Psicanalista com mais de 7 anos de experiência clínica, une a psicanálise ao apoio prático na orientação parental.",
+      "Atende adolescentes e adultos e dedica atenção especial a mulheres em diferentes fases da vida, ao luto e à perda, à psicologia perinatal e aos estudos sobre relacionamentos.",
     ],
-    focus: ["Análise individual", "Ansiedade", "Luto", "Atendimento online"],
+    focus: ["Adolescentes e adultos", "Orientação parental", "Psicologia perinatal", "Luto e perda"],
+    education: [
+      { period: "2017", text: "Graduação em Psicologia — UniCEUB" },
+      { text: "Pós-graduação em Teorias Psicanalíticas — UniCEUB" },
+      { text: "Formação em Doula — ciclos perinatal, parto e pós-parto" },
+      { text: "Certificação de Educadora Perinatal" },
+    ],
+    trajectory: {
+      title: "Estudos e especializações",
+      items: [
+        { text: "Tanatologia — luto e perda" },
+        {
+          period: "2021–2025",
+          text: "Avaliação de transtornos de personalidade, psicologia forense, acolhimento em situações de aborto, estudos sobre narcisismo e sobre relacionamentos amorosos",
+        },
+      ],
+    },
+    services: [
+      "Terapia para adolescentes e adultos",
+      "Orientação parental",
+      "Terapia em grupo",
+      "Acompanhamento terapêutico",
+    ],
   },
   {
     slug: "jennifer-patricia-kuhn-lago",
     name: "Jennifer Patrícia Kuhn Lago",
     role: "Psicanalista",
+    crp: "CRP 01/26397",
     photo: img("image-4.png"),
     index: "02",
     bio: [
-      "Dedica-se ao atendimento de casais e ao acompanhamento de pessoas em processos de transição — mudanças de cidade, de carreira, de fase.",
-      "Conduz o processo com precisão clínica e acolhimento, sustentando o diálogo onde ele costuma se interromper.",
+      "Psicóloga formada pelo UniCEUB em 2022, com formação básica em psicanálise pelo Corpo Freudiano de Brasília.",
+      "Atende adolescentes e adultos em português, espanhol e inglês. Seu interesse de pesquisa está nos transtornos alimentares.",
     ],
-    focus: ["Casais", "Transições de vida", "Suporte emocional", "Presencial"],
+    focus: ["Adolescentes e adultos", "Transtornos alimentares", "Português · Espanhol · Inglês"],
+    education: [
+      { period: "2018–2022", text: "Graduação em Psicologia — UniCEUB" },
+      { period: "2021–2024", text: "Formação básica em psicanálise — Corpo Freudiano de Brasília" },
+      { period: "2023–atual", text: "Mestrado — Arden University" },
+    ],
+    trajectory: {
+      title: "Publicações",
+      items: [
+        { period: "2022", text: "Capítulo de livro acadêmico sobre preconceito" },
+        { period: "2023", text: "E-book sobre o desenvolvimento e o tratamento dos transtornos alimentares" },
+      ],
+    },
+    languages: ["Português", "Espanhol", "Inglês"],
   },
   {
     slug: "giovanna-alves-campos",
     name: "Giovanna Alves Campos",
     role: "Psicanalista",
+    crp: "CRP 01/26138",
     photo: img("image-5.png"),
     index: "03",
     bio: [
-      "Atua com transtornos alimentares e com o cuidado à parentalidade, acompanhando famílias na construção de vínculos mais leves.",
-      "A escuta parte do corpo e da história: entender o sintoma antes de tentar corrigi-lo.",
+      "Atende adolescentes, adultos e idosos, com uma abordagem humanizada e integrativa. Realiza atendimentos domiciliares, com foco na saúde mental na terceira idade.",
+      "Tem interesse por relacionamentos de casal, transtornos de humor e estudos sobre masculinidade.",
     ],
-    focus: [
-      "Transtornos alimentares",
-      "Parentalidade",
-      "Adolescentes",
-      "Home saúde",
+    focus: ["Adolescentes, adultos e idosos", "Home saúde", "Transtornos de humor", "Casais"],
+    education: [
+      { period: "2022", text: "Graduação em Psicologia — UniCEUB" },
+      { period: "2022–2024", text: "Formação básica em psicanálise — Corpo Freudiano de Brasília" },
     ],
+    trajectory: {
+      title: "Experiência e cursos",
+      items: [
+        { period: "2023–atual", text: "Psicóloga na Home Health Clinic — atendimento domiciliar a idosos" },
+        { period: "2023", text: "Especialização em Clínica de Transtornos Alimentares — Instituto ESPE" },
+        { period: "2020", text: "Formação em psiquiatria antimanicomial e estudos de neuropsicofarmacologia" },
+        { period: "2019", text: "Oficina de prevenção de crise" },
+      ],
+    },
   },
 ];
 

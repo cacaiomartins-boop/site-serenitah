@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   brand,
   chapters,
+  isWithinHours,
   services,
   therapists,
   whatsappLink,
@@ -64,6 +66,18 @@ export const Route = createFileRoute("/")({
 });
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
+
+function OpenNow() {
+  const [on, setOn] = useState<boolean | null>(null);
+  useEffect(() => setOn(isWithinHours()), []);
+  if (on === null) return null;
+  return (
+    <span className="ml-auto inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-paper px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-muted-foreground">
+      <span className={`h-1.5 w-1.5 rounded-full ${on ? "animate-pulse bg-emerald-500" : "bg-clay/60"}`} />
+      {on ? "Aberto agora" : "Fechado agora"}
+    </span>
+  );
+}
 
 const Arrow = () => (
   <span className="btn-dot" aria-hidden>
@@ -147,16 +161,44 @@ function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-clay" /> Seg a sex, 8h às 19h · Presencial e online
               </p>
             </div>
-            <div style={d(760)} className="enter relative hidden md:col-span-5 md:block">
-              <div className="max-w-[17rem] overflow-hidden rounded-2xl border border-cream/30 bg-cream/95 shadow-[0_30px_70px_-35px_rgba(0,0,0,0.65)] backdrop-blur-sm md:ml-auto">
-                <div className="h-1.5 bg-gradient-to-r from-clay via-wine to-clay" />
-                <div className="p-6">
+            <div style={d(760)} className="enter relative hidden md:col-span-5 md:flex md:self-stretch">
+              <div className="max-w-[17rem] overflow-hidden rounded-2xl border border-cream/30 bg-cream/95 shadow-[0_30px_70px_-35px_rgba(0,0,0,0.65)] backdrop-blur-sm md:ml-auto md:flex md:h-full md:flex-col">
+                <div className="h-1.5 shrink-0 bg-gradient-to-r from-clay via-wine to-clay" />
+                <div className="p-6 md:flex md:flex-1 md:flex-col md:gap-4 md:p-7">
                   <div className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-wine" />
                     <span className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-clay">Horário</span>
+                    <OpenNow />
                   </div>
-                  <p className="mt-3 font-display text-[1.7rem] leading-[1.08]">Seg a sex,<br />8h às 19h</p>
-                  <p className="mt-3 border-t border-border pt-3 text-sm text-muted-foreground">Presencial e online</p>
+                  <p className="mt-3 font-display text-[1.7rem] leading-[1.08] md:mt-0 md:text-[2.2rem]">Seg a sex,<br />8h às 19h</p>
+                  <div className="hidden items-center gap-1.5 md:flex" aria-label="Segunda a sexta">
+                    {["S", "T", "Q", "Q", "S", "S", "D"].map((l, i) => (
+                      <span key={i} className={`grid h-7 w-7 place-items-center rounded-full font-mono text-[0.65rem] ${i < 5 ? "bg-coffee text-cream" : "border border-dashed border-border text-muted-foreground/60"}`}>{l}</span>
+                    ))}
+                  </div>
+                  <div className="hidden grid-cols-2 gap-2 md:grid">
+                    <div className="rounded-xl bg-coffee/[0.05] px-3 py-2.5">
+                      <p className="font-display text-xl leading-none">50 min</p>
+                      <p className="mt-1 text-xs text-muted-foreground">por sessão</p>
+                    </div>
+                    <div className="rounded-xl bg-coffee/[0.05] px-3 py-2.5">
+                      <p className="font-display text-xl leading-none">Semanal</p>
+                      <p className="mt-1 text-xs text-muted-foreground">frequência comum</p>
+                    </div>
+                  </div>
+                  <div className="mt-3 border-t border-border pt-3 md:mt-auto md:pt-4">
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {["Presencial na Asa Norte e online", "Sigilo integral em todas as sessões", "Primeira conversa sem compromisso"].map((t) => (
+                        <li key={t} className="flex items-start gap-2.5">
+                          <svg viewBox="0 0 16 16" className="mt-[3px] h-3.5 w-3.5 shrink-0 text-clay" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="m3 8.5 3.2 3L13 4.5" /></svg>
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                    <a href="#contato" className="mt-4 hidden items-center justify-between rounded-full bg-coffee px-4 py-2.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-cream transition-colors hover:bg-wine md:flex">
+                      Agendar horário <span aria-hidden>→</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -266,6 +308,24 @@ function Home() {
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-cream/30 md:h-11 md:w-11 transition-all group-hover:bg-clay group-hover:border-clay">→</span>
               </div>
             </Link>
+          ))}
+          {[0, 1].map((i) => (
+            <div key={`soon-${i}`} data-reveal="up" style={d((therapists.length + i) * 120)} className="w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-dashed border-cream/20 bg-cream/[0.03] p-2.5 md:w-[24vw] md:p-3" aria-label="Nova profissional em breve">
+              <div className="grid h-[250px] place-items-center overflow-hidden rounded-2xl border border-dashed border-cream/15 bg-cream/[0.04] mask-arch md:h-[300px]">
+                <svg viewBox="0 0 64 64" className="h-20 w-20 text-cream/20" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" aria-hidden>
+                  <circle cx="32" cy="24" r="9" />
+                  <path d="M14 54c2-11 9-17 18-17s16 6 18 17" />
+                </svg>
+              </div>
+              <div className="flex items-end justify-between gap-4 px-2 pb-1 pt-4">
+                <div>
+                  <span className="font-mono text-sm text-clay/70">{String(therapists.length + i + 1).padStart(2, "0")}</span>
+                  <h3 className="mt-1 text-xl leading-tight text-cream/60 md:text-2xl">Em breve</h3>
+                  <p className="mt-1 text-sm text-cream/40">Novo profissional</p>
+                </div>
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-dashed border-cream/20 text-cream/30 md:h-11 md:w-11" aria-hidden>…</span>
+              </div>
+            </div>
           ))}
         </DragRow>
         </div>
