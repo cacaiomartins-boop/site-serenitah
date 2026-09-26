@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   brand,
@@ -11,7 +11,6 @@ import {
 import { ProgressRail } from "@/components/site/ProgressRail";
 import { Reveal, ReadingReveal, ScrollReveal } from "@/components/site/Reveal";
 import { ProcessLine } from "@/components/site/ProcessLine";
-import { DragRow } from "@/components/site/DragRow";
 import { Faq } from "@/components/site/Faq";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 
@@ -103,6 +102,30 @@ function SectionHead({ n, label, title, className = "" }: { n: string; label: st
 }
 
 function Home() {
+  const teamRef = useRef<HTMLDivElement>(null);
+  const [teamEnd, setTeamEnd] = useState(false);
+
+  useEffect(() => {
+    const el = teamRef.current;
+    if (!el) return;
+    const check = () => setTeamEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 8);
+    check();
+    el.addEventListener("scroll", check, { passive: true });
+    return () => el.removeEventListener("scroll", check);
+  }, []);
+
+  const nextTeam = () => {
+    const el = teamRef.current;
+    if (!el) return;
+    if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 8) {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+    const first = el.children[0] as HTMLElement | undefined;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    el.scrollBy({ left: (first?.getBoundingClientRect().width ?? 300) + gap, behavior: "smooth" });
+  };
+
   return (
     <div className="grain min-h-screen overflow-x-hidden">
       <ScrollReveal />
@@ -291,9 +314,9 @@ function Home() {
             </div>
             <h2 data-reveal="up" style={d(120)} className="mt-3 text-[2rem] leading-[1] md:mt-4 md:text-5xl lg:text-[3.6vw]">Quem <em className="text-clay">escuta</em></h2>
           </div>
-          <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-cream/60 md:text-sm md:tracking-[0.18em]">Deslize para o lado →</span>
+          <button type="button" onClick={nextTeam} data-cursor="cta" className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-cream/85 transition-colors hover:bg-cream hover:text-coffee md:text-xs">{teamEnd ? "← Voltar ao início" : "Próximo →"}</button>
         </div>
-        <DragRow className="-mx-5 mt-6 scroll-px-5 px-5 max-md:gap-3 md:mx-0 md:mt-8 md:px-0">
+        <div ref={teamRef} className="-mx-5 mt-6 flex snap-x snap-mandatory scroll-px-5 gap-6 overflow-x-auto px-5 pb-4 [scrollbar-width:none] max-md:gap-3 md:mx-0 md:mt-8 md:px-0 [&::-webkit-scrollbar]:hidden">
           {therapists.map((t, i) => (
             <Link key={t.slug} data-reveal="up" style={d(i * 120)} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-2.5 md:p-3 transition-colors hover:bg-cream/10 md:w-[24vw]">
               <div className="overflow-hidden rounded-2xl bg-sand mask-arch">
@@ -327,7 +350,7 @@ function Home() {
               </div>
             </div>
           ))}
-        </DragRow>
+        </div>
         </div>
       </section>
 
