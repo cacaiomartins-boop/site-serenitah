@@ -169,7 +169,7 @@ function Home() {
             <a href="#contato" className="btn-line-light">Agendar</a>
           </div>
 
-          <div className="mt-auto grid items-end gap-10 pb-[8.6rem] pt-10 md:grid-cols-12 md:items-center md:gap-8 md:px-6 md:pb-0 md:pt-12 lg:px-14">
+          <div className="mt-auto max-md:my-auto grid items-end gap-10 pb-[8.6rem] pt-10 md:grid-cols-12 md:items-center md:gap-8 md:px-6 md:pb-0 md:pt-12 lg:px-14">
             <div className="max-md:text-center md:col-span-7">
               <span style={d(200)} className="enter chip max-md:border-cream/30 max-md:bg-cream/90 max-md:px-3 max-md:py-1.5 max-md:text-xs"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
               <h1 style={d(320)} className="enter max-md:[text-shadow:0_2px_18px_rgba(20,8,4,0.6)] mt-4 text-[10.2vw] leading-[0.9] tracking-[-0.03em] text-cream md:mt-6 md:text-[6.2vw] lg:text-[5.2vw]">
