@@ -71,7 +71,7 @@ function OpenNow() {
   useEffect(() => setOn(isWithinHours()), []);
   if (on === null) return null;
   return (
-    <span className="ml-auto inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-paper px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-muted-foreground">
+    <span className="ml-auto inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-paper px-2 py-0.5 font-mono text-[0.56rem] uppercase tracking-[0.08em] text-muted-foreground">
       <span className={`h-1.5 w-1.5 rounded-full ${on ? "animate-pulse bg-emerald-500" : "bg-clay/60"}`} />
       {on ? "Aberto agora" : "Fechado agora"}
     </span>
@@ -133,7 +133,7 @@ function Home() {
       <WhatsAppFloat />
 
       {/* ————— Abertura — ambiente ao fundo ————— */}
-      <header className="relative flex min-h-[100svh] flex-col overflow-hidden bg-coffee px-5 pb-7 pt-5 md:block md:min-h-0 md:px-12 md:pb-16 md:pt-6 lg:px-20">
+      <header className="relative flex min-h-[100svh] flex-col overflow-hidden bg-coffee px-7 pb-7 pt-5 md:min-h-[86svh] md:px-12 md:pb-12 md:pt-5 lg:px-20">
         <div className="absolute inset-x-0 -top-[14%] bottom-0" data-parallax aria-hidden>
           <img
             src={brand.room}
@@ -144,9 +144,11 @@ function Home() {
           {/* escuro e opaco à esquerda (texto) → revela o ambiente à direita */}
           <div className="absolute inset-0 bg-gradient-to-r from-coffee/90 via-coffee/55 via-45% to-coffee/0 max-md:from-coffee/80 max-md:via-coffee/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-coffee/85 via-coffee/10 to-coffee/45 max-md:from-coffee/75 max-md:via-coffee/5" />
+          {/* reforço de contraste só no celular */}
+          <div className="absolute inset-0 bg-coffee/40 md:hidden" />
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col md:block">
+        <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col">
           <div style={d(0)} className="enter flex items-center justify-between gap-6 border-b border-cream/20 pb-4 md:pb-5">
             <a href="#" className="flex items-center gap-3">
               <img src={brand.mark} alt="" className="h-11 w-11 rounded-full bg-cream/95 p-1.5 shadow-[0_6px_18px_-8px_rgba(0,0,0,0.6)]" />
@@ -167,58 +169,58 @@ function Home() {
             <a href="#contato" className="btn-line-light">Agendar</a>
           </div>
 
-          <div className="mt-auto grid items-end gap-10 pb-[3.6rem] pt-10 md:mt-14 md:grid-cols-12 md:pb-0 md:pt-0">
-            <div className="md:col-span-7">
+          <div className="mt-auto grid items-end gap-10 pb-[8.6rem] pt-10 md:grid-cols-12 md:items-center md:gap-8 md:px-6 md:pb-0 md:pt-12 lg:px-14">
+            <div className="max-md:text-center md:col-span-7">
               <span style={d(200)} className="enter chip max-md:border-cream/30 max-md:bg-cream/90 max-md:px-3 max-md:py-1.5 max-md:text-xs"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
-              <h1 style={d(320)} className="enter mt-5 text-[13.5vw] leading-[0.9] tracking-[-0.03em] text-cream md:mt-8 md:text-[7.4vw] lg:text-[6.6vw]">
+              <h1 style={d(320)} className="enter max-md:[text-shadow:0_2px_18px_rgba(20,8,4,0.6)] mt-4 text-[10.2vw] leading-[0.9] tracking-[-0.03em] text-cream md:mt-6 md:text-[6.2vw] lg:text-[5.2vw]">
                 Reencontrar o <em className="text-[color-mix(in_oklab,var(--clay)_72%,white)] [text-shadow:0_2px_28px_rgba(20,8,4,0.55)]">equilíbrio</em> leva tempo.
               </h1>
-              <p style={d(520)} className="enter mt-4 max-w-lg text-[0.95rem] leading-relaxed text-cream/80 md:mt-6 md:text-xl">
+              <p style={d(520)} className="enter mt-3 max-w-lg text-[0.86rem] max-md:mx-auto leading-relaxed text-cream/80 max-md:text-cream max-md:[text-shadow:0_1px_12px_rgba(20,8,4,0.7)] md:mt-5 md:text-[1.05rem]">
                 Escuta profissional para quem quer entender a própria história sem pressa. Atendimento individual e de casais, presencial ou online.
               </p>
-              <div style={d(680)} className="enter mt-6 flex flex-col gap-3 md:mt-8 md:flex-row md:flex-wrap md:items-center md:gap-4">
-                <a href="#contato" className="btn-solid-light max-md:w-full max-md:justify-center">Agendar primeira sessão <Arrow /></a>
-                <a href="#cuidados" className="btn-line-light max-md:hidden">Ver cuidados</a>
+              <div style={d(680)} className="enter mt-6 flex flex-col max-md:items-center gap-3 md:mt-7 md:flex-row md:flex-wrap md:items-center md:gap-3">
+                <a href="#contato" className="btn-solid-light max-md:w-[84%] max-md:justify-center max-md:!py-3 max-md:!text-[0.7rem] md:!py-3 md:!pl-6 md:!pr-4 md:!text-[0.72rem]">Agendar primeira sessão <Arrow /></a>
+                <a href="#cuidados" className="btn-line-light max-md:hidden md:!px-5 md:!py-2.5 md:!text-[0.7rem]">Ver cuidados</a>
               </div>
-              <p style={d(820)} className="enter mt-5 flex items-center justify-center gap-2 text-center font-mono text-[0.68rem] uppercase tracking-[0.14em] text-cream/70 md:hidden">
+              <p style={d(820)} className="enter mt-5 flex items-center justify-center gap-2 text-center font-mono text-[0.68rem] uppercase tracking-[0.14em] text-cream/90 max-md:[text-shadow:0_1px_10px_rgba(20,8,4,0.7)] md:hidden">
                 <span className="h-1.5 w-1.5 rounded-full bg-clay" /> Seg a sex, 8h às 19h · Presencial e online
               </p>
             </div>
-            <div style={d(760)} className="enter relative hidden md:col-span-5 md:flex md:self-stretch">
-              <div className="max-w-[17rem] overflow-hidden rounded-2xl border border-cream/30 bg-cream/95 shadow-[0_30px_70px_-35px_rgba(0,0,0,0.65)] backdrop-blur-sm md:ml-auto md:flex md:h-full md:flex-col">
+            <div style={d(760)} className="enter relative hidden md:col-span-5 md:flex">
+              <div className="max-w-[14.5rem] overflow-hidden rounded-2xl border border-cream/30 bg-cream/95 shadow-[0_30px_70px_-35px_rgba(0,0,0,0.65)] backdrop-blur-sm md:ml-auto md:flex md:h-full md:flex-col">
                 <div className="h-1.5 shrink-0 bg-gradient-to-r from-clay via-wine to-clay" />
-                <div className="p-6 md:flex md:flex-1 md:flex-col md:gap-4 md:p-7">
+                <div className="p-6 md:flex md:flex-1 md:flex-col md:gap-3 md:p-5">
                   <div className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-wine" />
-                    <span className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-clay">Horário</span>
+                    <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-clay">Horário</span>
                     <OpenNow />
                   </div>
-                  <p className="mt-3 font-display text-[1.7rem] leading-[1.08] md:mt-0 md:text-[2.2rem]">Seg a sex,<br />8h às 19h</p>
-                  <div className="hidden items-center gap-1.5 md:flex" aria-label="Segunda a sexta">
+                  <p className="mt-3 font-display text-[1.7rem] leading-[1.08] md:mt-0 md:text-[1.55rem]">Seg a sex,<br />8h às 19h</p>
+                  <div className="hidden items-center gap-1 md:flex" aria-label="Segunda a sexta">
                     {["S", "T", "Q", "Q", "S", "S", "D"].map((l, i) => (
-                      <span key={i} className={`grid h-7 w-7 place-items-center rounded-full font-mono text-[0.65rem] ${i < 5 ? "bg-coffee text-cream" : "border border-dashed border-border text-muted-foreground/60"}`}>{l}</span>
+                      <span key={i} className={`grid h-6 w-6 place-items-center rounded-full font-mono text-[0.6rem] ${i < 5 ? "bg-coffee text-cream" : "border border-dashed border-border text-muted-foreground/60"}`}>{l}</span>
                     ))}
                   </div>
                   <div className="hidden grid-cols-2 gap-2 md:grid">
-                    <div className="rounded-xl bg-coffee/[0.05] px-3 py-2.5">
-                      <p className="font-display text-xl leading-none">50 min</p>
+                    <div className="rounded-xl bg-coffee/[0.05] px-2.5 py-2">
+                      <p className="font-display text-lg leading-none">50 min</p>
                       <p className="mt-1 text-xs text-muted-foreground">por sessão</p>
                     </div>
-                    <div className="rounded-xl bg-coffee/[0.05] px-3 py-2.5">
-                      <p className="font-display text-xl leading-none">Semanal</p>
+                    <div className="rounded-xl bg-coffee/[0.05] px-2.5 py-2">
+                      <p className="font-display text-lg leading-none">Semanal</p>
                       <p className="mt-1 text-xs text-muted-foreground">frequência comum</p>
                     </div>
                   </div>
-                  <div className="mt-3 border-t border-border pt-3 md:mt-auto md:pt-4">
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      {["Presencial na Asa Norte e online", "Sigilo integral em todas as sessões", "Primeira conversa sem compromisso"].map((t) => (
+                  <div className="mt-3 border-t border-border pt-3 md:mt-auto md:pt-3">
+                    <ul className="space-y-1.5 text-[0.8rem] leading-snug text-muted-foreground">
+                      {["Presencial e online", "Sigilo integral", "Primeira conversa sem compromisso"].map((t) => (
                         <li key={t} className="flex items-start gap-2.5">
                           <svg viewBox="0 0 16 16" className="mt-[3px] h-3.5 w-3.5 shrink-0 text-clay" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="m3 8.5 3.2 3L13 4.5" /></svg>
                           {t}
                         </li>
                       ))}
                     </ul>
-                    <a href="#contato" className="mt-4 hidden items-center justify-between rounded-full bg-coffee px-4 py-2.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-cream transition-colors hover:bg-wine md:flex">
+                    <a href="#contato" className="mt-3 hidden items-center justify-between rounded-full bg-coffee px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-cream transition-colors hover:bg-wine md:flex">
                       Agendar horário <span aria-hidden>→</span>
                     </a>
                   </div>
