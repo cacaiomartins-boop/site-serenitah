@@ -94,7 +94,7 @@ function SectionHead({ n, label, title, className = "" }: { n: string; label: st
         <span className="h-px w-10 bg-clay/60" />
         <span className="label-meta">{label}</span>
       </div>
-      <h2 data-reveal="up" style={d(120)} className="mt-3 text-[2rem] leading-[1.14] tracking-[-0.02em] md:mt-4 md:text-5xl lg:text-[3.6vw]">
+      <h2 data-reveal="up" style={d(120)} className="mt-3 text-[2rem] leading-[1.14] tracking-[-0.02em] md:mt-4 md:text-[2.6rem] lg:text-[3.2vw]">
         {title}
       </h2>
     </div>
@@ -172,10 +172,10 @@ function Home() {
           <div className="mt-auto max-md:my-auto grid items-end gap-10 pb-[8.6rem] pt-10 md:grid-cols-12 md:items-center md:gap-8 md:px-6 md:pb-0 md:pt-12 lg:px-14">
             <div className="max-md:text-center md:col-span-7">
               <span style={d(200)} className="enter chip max-md:border-cream/30 max-md:bg-cream/90 max-md:px-3 max-md:py-1.5 max-md:text-xs"><span className="h-2 w-2 rounded-full bg-wine" /> Psicanálise · Asa Norte, Brasília</span>
-              <h1 style={d(320)} className="enter max-md:[text-shadow:0_2px_18px_rgba(20,8,4,0.6)] mt-4 text-[10.2vw] leading-[0.9] tracking-[-0.03em] text-cream md:mt-6 md:text-[6.2vw] lg:text-[5.2vw]">
+              <h1 style={d(320)} className="enter max-md:[text-shadow:0_2px_18px_rgba(20,8,4,0.6)] mt-4 text-[10.2vw] max-md:text-[11.2vw] leading-[0.9] tracking-[-0.03em] text-cream md:mt-6 md:text-[6.2vw] lg:text-[5.2vw]">
                 Reencontrar o <em className="text-[color-mix(in_oklab,var(--clay)_72%,white)] [text-shadow:0_2px_28px_rgba(20,8,4,0.55)]">equilíbrio</em> leva tempo.
               </h1>
-              <p style={d(520)} className="enter mt-3 max-w-lg text-[0.86rem] max-md:mx-auto leading-relaxed text-cream/80 max-md:text-cream max-md:[text-shadow:0_1px_12px_rgba(20,8,4,0.7)] md:mt-5 md:text-[1.05rem]">
+              <p style={d(520)} className="enter mt-3 max-w-lg text-[0.86rem] max-md:mx-auto leading-relaxed max-md:leading-[1.3] text-cream/80 max-md:text-cream max-md:[text-shadow:0_1px_12px_rgba(20,8,4,0.7)] md:mt-5 md:text-[1.05rem]">
                 Escuta profissional para quem quer entender a própria história sem pressa. Atendimento individual e de casais, presencial ou online.
               </p>
               <div style={d(680)} className="enter mt-6 flex flex-col max-md:items-center gap-3 md:mt-7 md:flex-row md:flex-wrap md:items-center md:gap-3">
@@ -232,30 +232,30 @@ function Home() {
       </header>
 
       {/* ————— 01 Sobre ————— */}
-      <section id="sobre" className="bg-sand px-5 py-12 md:px-12 md:py-20 lg:px-20">
+      <section id="sobre" className="bg-sand px-5 py-12 md:px-12 md:py-12 lg:px-20">
         <div className="mx-auto grid max-w-[1440px] gap-7 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <SectionHead n="01" label="Quem somos" title={<>Estamos aqui para <em className="text-clay">cuidar</em> de você.</>} />
             <div data-reveal="scale" className="mt-5 overflow-hidden mask-organic md:mt-6">
-              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[210px] w-full object-cover object-[center_42%] md:h-[300px]" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
+              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[210px] w-full object-cover object-[center_42%] md:h-[230px]" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
             </div>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 lg:pt-10">
             <ReadingReveal
               text="A Serenitah é uma clínica de psicanálise em Brasília dedicada à escuta: do que se diz, do que se cala e do que se repete."
-              className="font-display text-[1.3rem] leading-[1.35] md:text-[1.75rem]"
+              className="font-display text-[1.3rem] leading-[1.35] md:text-[1.45rem]"
             />
             <Reveal delay={120}>
-              <p className="mt-4 text-[0.95rem] leading-relaxed text-muted-foreground md:mt-5 md:text-base">
+              <p className="mt-4 text-[0.95rem] leading-relaxed text-muted-foreground md:mt-4 md:text-[0.9rem]">
                 Atendemos adultos, casais, adolescentes e famílias, no consultório da Asa Norte ou online. Cada processo é conduzido por psicanalistas, com sigilo integral e sem fórmulas prontas — o percurso é construído no ritmo de quem o vive.
               </p>
             </Reveal>
             <Reveal delay={200}>
               <div className="mt-5 flex flex-wrap gap-2 md:mt-6 md:grid md:grid-cols-2 md:gap-2.5">
                 {["Análise individual", "Saúde mental e bem-estar", "Psicoterapia especializada", "Suporte emocional"].map((t, i) => (
-                  <div key={t} data-reveal="up" style={d(i * 90)} className="flex items-center gap-2 rounded-full border border-border bg-paper px-3.5 py-2 md:panel md:gap-3 md:rounded-[1.25rem] md:px-4 md:py-3">
+                  <div key={t} data-reveal="up" style={d(i * 90)} className="flex items-center gap-2 rounded-full border border-border bg-paper px-3.5 py-2 md:panel md:gap-2.5 md:rounded-[1.1rem] md:px-3.5 md:py-2">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-clay md:h-2 md:w-2" />
-                    <span className="text-[0.8rem] md:text-sm">{t}</span>
+                    <span className="text-[0.8rem] md:text-[0.82rem]">{t}</span>
                   </div>
                 ))}
               </div>
@@ -265,7 +265,7 @@ function Home() {
       </section>
 
       {/* ————— 02 Cuidados ————— */}
-      <section id="cuidados" className="bg-background px-5 py-12 md:px-12 md:py-20 lg:px-20">
+      <section id="cuidados" className="bg-background px-5 py-12 md:px-12 md:py-16 lg:px-20">
         <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-wrap items-end justify-between gap-3 md:gap-5">
           <SectionHead n="02" label="Cuidados" title={<>Como podemos<br />te ajudar?</>} />
@@ -278,7 +278,7 @@ function Home() {
               <article className={`panel grid items-center gap-6 overflow-hidden p-5 max-md:flex max-md:h-full max-md:flex-col-reverse max-md:gap-0 max-md:p-0 md:p-6 lg:grid-cols-12 ${i % 2 ? "bg-blush/50" : ""}`}>
                 <div className={`lg:col-span-6 max-md:flex max-md:flex-1 max-md:flex-col max-md:p-4 ${i % 2 ? "lg:order-2 lg:col-start-7" : ""}`}>
                   <span className="font-mono text-sm text-clay">{s.n}</span>
-                  <h3 className="mt-1 text-[1.6rem] leading-tight md:mt-2 md:text-4xl">{s.title}</h3>
+                  <h3 className="mt-1 text-[1.6rem] leading-tight md:mt-2 md:text-[2.1rem]">{s.title}</h3>
                   <p className="mt-2 max-w-lg text-[0.9rem] leading-relaxed text-muted-foreground max-md:line-clamp-4 md:mt-3 md:text-base">{s.text}</p>
                   <a href={whatsappLink(`Olá! Gostaria de saber mais sobre ${s.title}.`)} target="_blank" rel="noreferrer" className="btn-line mt-4 max-md:mt-auto max-md:justify-center max-md:!px-4 max-md:!py-2.5 max-md:!text-[0.7rem] md:mt-5">
                     Conversar sobre isso →
@@ -286,7 +286,7 @@ function Home() {
                 </div>
                 <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : "lg:col-start-8"}`}>
                   <div className={`overflow-hidden max-md:!rounded-none ${i % 2 ? "mask-organic" : "mask-arch"}`}>
-                    <img src={s.photo} alt={s.photoAlt} loading="lazy" className="ken h-[150px] w-full object-cover md:h-[250px]" style={{ filter: "sepia(0.18) saturate(0.9)", objectPosition: s.photoPosition }} />
+                    <img src={s.photo} alt={s.photoAlt} loading="lazy" className="ken h-[150px] w-full object-cover md:h-[225px]" style={{ filter: "sepia(0.18) saturate(0.9)", objectPosition: s.photoPosition }} />
                   </div>
                 </div>
               </article>
@@ -297,7 +297,7 @@ function Home() {
       </section>
 
       {/* ————— 03 Processo ————— */}
-      <section id="processo" className="bg-blush/60 px-5 py-12 md:px-12 md:py-20 lg:px-20">
+      <section id="processo" className="bg-blush/60 px-5 py-12 md:px-12 md:py-16 lg:px-20">
         <div className="mx-auto max-w-[1440px]">
         <SectionHead n="03" label="Processo" title="Conheça nosso processo" className="mb-7 md:mb-10" />
         <ProcessLine />
@@ -305,7 +305,7 @@ function Home() {
       </section>
 
       {/* ————— 04 Equipe ————— */}
-      <section id="equipe" className="bg-coffee px-5 py-12 text-cream md:px-12 md:py-20 lg:px-20 md:px-12 lg:px-20">
+      <section id="equipe" className="bg-coffee px-5 py-12 text-cream md:px-12 md:py-12 lg:px-20">
         <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -314,20 +314,20 @@ function Home() {
               <span className="h-px w-12 bg-clay/60" />
               <span className="font-mono text-[0.78rem] uppercase tracking-[0.18em] text-cream/60">Equipe</span>
             </div>
-            <h2 data-reveal="up" style={d(120)} className="mt-3 text-[2rem] leading-[1] md:mt-4 md:text-5xl lg:text-[3.6vw]">Quem <em className="text-clay">escuta</em></h2>
+            <h2 data-reveal="up" style={d(120)} className="mt-3 text-[2rem] leading-[1] md:mt-3 md:text-4xl lg:text-[2.8vw]">Quem <em className="text-clay">escuta</em></h2>
           </div>
           <button type="button" onClick={nextTeam} data-cursor="cta" className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-cream/85 transition-colors hover:bg-cream hover:text-coffee md:text-xs">{teamEnd ? "← Voltar ao início" : "Próximo →"}</button>
         </div>
         <div ref={teamRef} className="-mx-5 mt-6 flex snap-x snap-mandatory scroll-px-5 gap-6 overflow-x-auto px-5 pb-4 [scrollbar-width:none] max-md:gap-3 md:mx-0 md:mt-8 md:px-0 [&::-webkit-scrollbar]:hidden">
           {therapists.map((t, i) => (
-            <Link key={t.slug} data-reveal="up" style={d(i * 120)} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-2.5 md:p-3 transition-colors hover:bg-cream/10 md:w-[24vw]">
+            <Link key={t.slug} data-reveal="up" style={d(i * 120)} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-2.5 md:p-3 transition-colors hover:bg-cream/10 md:w-[19vw] md:min-w-[15rem]">
               <div className="overflow-hidden rounded-2xl bg-sand mask-arch">
-                <img src={t.photo} alt={t.name} loading="lazy" draggable={false} className="ken h-[250px] w-full object-cover object-top md:h-[300px]" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
+                <img src={t.photo} alt={t.name} loading="lazy" draggable={false} className="ken h-[250px] w-full object-cover object-top md:h-[235px]" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
               </div>
               <div className="flex items-end justify-between gap-4 px-2 pb-1 pt-4">
                 <div>
                   <span className="font-mono text-sm text-clay">{t.index}</span>
-                  <h3 className="mt-1 text-xl leading-tight md:text-2xl">{t.name}</h3>
+                  <h3 className="mt-1 text-xl leading-tight md:text-xl">{t.name}</h3>
                   <p className="mt-1 text-sm text-cream/60">{t.role}</p>
                 </div>
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-cream/30 md:h-11 md:w-11 transition-all group-hover:bg-clay group-hover:border-clay">→</span>
@@ -335,8 +335,8 @@ function Home() {
             </Link>
           ))}
           {[0, 1].map((i) => (
-            <div key={`soon-${i}`} data-reveal="up" style={d((therapists.length + i) * 120)} className="w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-dashed border-cream/20 bg-cream/[0.03] p-2.5 md:w-[24vw] md:p-3" aria-label="Nova profissional em breve">
-              <div className="grid h-[250px] place-items-center overflow-hidden rounded-2xl border border-dashed border-cream/15 bg-cream/[0.04] mask-arch md:h-[300px]">
+            <div key={`soon-${i}`} data-reveal="up" style={d((therapists.length + i) * 120)} className="w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-dashed border-cream/20 bg-cream/[0.03] p-2.5 md:w-[19vw] md:min-w-[15rem] md:p-3" aria-label="Nova profissional em breve">
+              <div className="grid h-[250px] place-items-center overflow-hidden rounded-2xl border border-dashed border-cream/15 bg-cream/[0.04] mask-arch md:h-[235px]">
                 <svg viewBox="0 0 64 64" className="h-20 w-20 text-cream/20" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" aria-hidden>
                   <circle cx="32" cy="24" r="9" />
                   <path d="M14 54c2-11 9-17 18-17s16 6 18 17" />
