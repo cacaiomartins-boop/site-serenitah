@@ -15,6 +15,8 @@ export const brand = {
   teamMeeting: img("serenitah-equipe-reuniao.png"),
   teamPhoto: img("serenitah-equipe-foto.jpg"),
   teamSession: img("serenitah-equipe-sessao.jpg"),
+  teamLaptop: img("serenitah-equipe-laptop.jpg"),
+  teamMap: img("serenitah-equipe-mapa.jpg"),
 };
 
 export type TimelineItem = { period?: string; text: string };
@@ -137,25 +139,25 @@ export const services = [
     n: "02",
     title: "Home Saúde",
     text: "Acompanhamento no ambiente da própria casa, para quem tem mobilidade reduzida ou precisa de continuidade no cuidado sem deslocamento.",
-    photo: brand.room,
-    photoAlt: "Ambiente de atendimento da Serenitah",
-    photoPosition: "center",
-  },
-  {
-    n: "03",
-    title: "Transtornos Alimentares",
-    text: "Cuidado especializado para a relação com o corpo e com a comida, em trabalho conjunto com a rede de saúde quando necessário.",
     photo: brand.teamPhoto,
     photoAlt: "Equipe da Serenitah",
     photoPosition: "center 25%",
   },
   {
+    n: "03",
+    title: "Transtornos Alimentares",
+    text: "Cuidado especializado para a relação com o corpo e com a comida, em trabalho conjunto com a rede de saúde quando necessário.",
+    photo: brand.teamLaptop,
+    photoAlt: "Equipe da Serenitah em reunião",
+    photoPosition: "center 35%",
+  },
+  {
     n: "04",
     title: "Apoio à Parentalidade",
     text: "Um espaço para pais e responsáveis pensarem suas escolhas, os impasses do dia a dia e o vínculo com os filhos, sem julgamento.",
-    photo: brand.session,
-    photoAlt: "Conversa profissional na Serenitah",
-    photoPosition: "center 42%",
+    photo: brand.teamMap,
+    photoAlt: "Equipe da Serenitah",
+    photoPosition: "center 35%",
   },
 ];
 
