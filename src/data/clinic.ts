@@ -13,6 +13,8 @@ export const brand = {
   session: img("image.png"),
   teamOffice: img("serenitah-equipe-consultorio.png"),
   teamMeeting: img("serenitah-equipe-reuniao.png"),
+  teamPhoto: img("serenitah-equipe-foto.jpg"),
+  teamSession: img("serenitah-equipe-sessao.jpg"),
 };
 
 export type TimelineItem = { period?: string; text: string };
@@ -127,9 +129,9 @@ export const services = [
     n: "01",
     title: "Psicanálise",
     text: "Um percurso de escuta contínua, onde aquilo que se repete pode finalmente ser dito de outro modo. Atendimento individual e de casais, presencial em Brasília ou online.",
-    photo: brand.teamOffice,
-    photoAlt: "Profissionais da Serenitah no consultório",
-    photoPosition: "center 40%",
+    photo: brand.teamSession,
+    photoAlt: "Atendimento na Serenitah",
+    photoPosition: "center 45%",
   },
   {
     n: "02",
@@ -143,9 +145,9 @@ export const services = [
     n: "03",
     title: "Transtornos Alimentares",
     text: "Cuidado especializado para a relação com o corpo e com a comida, em trabalho conjunto com a rede de saúde quando necessário.",
-    photo: brand.teamMeeting,
-    photoAlt: "Equipe Serenitah em reunião de trabalho",
-    photoPosition: "center 45%",
+    photo: brand.teamPhoto,
+    photoAlt: "Equipe da Serenitah",
+    photoPosition: "center 25%",
   },
   {
     n: "04",
@@ -203,10 +205,6 @@ export const faqs = [
   {
     q: "Como faço para agendar?",
     a: "Pelo WhatsApp (61) 99402-6563, pelo e-mail serenitah.terapias@gmail.com ou pelo formulário desta página.",
-  },
-  {
-    q: "Vocês atendem crianças e adolescentes?",
-    a: "Sim, com profissionais dedicadas a esse público e acompanhamento dos responsáveis quando o caso pede.",
   },
   {
     q: "Posso mudar de profissional durante o processo?",

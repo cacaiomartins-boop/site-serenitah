@@ -66,6 +66,13 @@ export const Route = createFileRoute("/")({
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
+const emergencyContacts = [
+  { num: "193", label: "Bombeiros" },
+  { num: "190", label: "Polícia" },
+  { num: "192", label: "SAMU" },
+  { num: "188", label: "CVV" },
+];
+
 function OpenNow() {
   const [on, setOn] = useState<boolean | null>(null);
   useEffect(() => setOn(isWithinHours()), []);
@@ -90,7 +97,6 @@ function SectionHead({ n, label, title, className = "" }: { n: string; label: st
   return (
     <div className={className}>
       <div data-reveal="left" className="flex items-center gap-4">
-        <span className="font-mono text-sm text-clay">{n}</span>
         <span className="h-px w-10 bg-clay/60" />
         <span className="label-meta">{label}</span>
       </div>
@@ -183,7 +189,7 @@ function Home() {
                 <a href="#cuidados" className="btn-line-light max-md:hidden md:!px-5 md:!py-2.5 md:!text-[0.7rem]">Ver cuidados</a>
               </div>
               <p style={d(820)} className="enter mt-5 flex items-center justify-center gap-2 text-center font-mono text-[0.68rem] uppercase tracking-[0.14em] text-cream/90 max-md:[text-shadow:0_1px_10px_rgba(20,8,4,0.7)] md:hidden">
-                <span className="h-1.5 w-1.5 rounded-full bg-clay" /> Seg a sex, 8h às 19h · Presencial e online
+                <span className="h-1.5 w-1.5 rounded-full bg-clay" /> Seg a sex, 8h às 20h · Presencial e online
               </p>
             </div>
             <div style={d(760)} className="enter relative hidden md:col-span-5 md:flex">
@@ -195,7 +201,7 @@ function Home() {
                     <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-clay">Horário</span>
                     <OpenNow />
                   </div>
-                  <p className="mt-3 font-display text-[1.7rem] leading-[1.08] md:mt-0 md:text-[1.55rem]">Seg a sex,<br />8h às 19h</p>
+                  <p className="mt-3 font-display text-[1.7rem] leading-[1.08] md:mt-0 md:text-[1.55rem]">Seg a sex,<br />8h às 20h</p>
                   <div className="hidden items-center gap-1 md:flex" aria-label="Segunda a sexta">
                     {["S", "T", "Q", "Q", "S", "S", "D"].map((l, i) => (
                       <span key={i} className={`grid h-6 w-6 place-items-center rounded-full font-mono text-[0.6rem] ${i < 5 ? "bg-coffee text-cream" : "border border-dashed border-border text-muted-foreground/60"}`}>{l}</span>
@@ -310,7 +316,6 @@ function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div data-reveal="left" className="flex items-center gap-4">
-              <span className="font-mono text-sm text-clay">04</span>
               <span className="h-px w-12 bg-clay/60" />
               <span className="font-mono text-[0.78rem] uppercase tracking-[0.18em] text-cream/60">Equipe</span>
             </div>
@@ -362,7 +367,6 @@ function Home() {
           <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-2">
             <div>
               <div data-reveal="left" className="flex items-center gap-3">
-                <span className="font-mono text-sm text-clay">05</span>
                 <span className="h-px w-8 bg-clay/60" />
                 <span className="label-meta">Perguntas</span>
               </div>
@@ -398,7 +402,7 @@ function Home() {
                   icon: <path d="M4 5.5C4 4.7 4.7 4 5.5 4h2l1.5 3.5-1.8 1.2a9 9 0 0 0 4.1 4.1l1.2-1.8L16 12.5v2c0 .8-.7 1.5-1.5 1.5C8.7 16 4 11.3 4 5.5Z" />,
                 },
                 {
-                  k: "Horário", v: "Seg a sex, 8h às 19h",
+                  k: "Horário", v: "Seg a sex, 8h às 20h",
                   icon: <><circle cx="10" cy="10" r="6.5" /><path d="M10 6.5V10l2.5 1.5" /></>,
                 },
                 {
@@ -449,6 +453,18 @@ function Home() {
           <div className="flex flex-col items-center gap-3 text-center md:hidden">
             <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
             <span className="font-display text-xl">{brand.name}</span>
+            <div className="mt-1 w-full max-w-[19rem] rounded-2xl border border-cream/15 bg-cream/[0.06] px-4 py-3.5">
+              <p className="font-mono text-[0.66rem] uppercase tracking-[0.18em] text-clay">É urgente?</p>
+              <p className="mt-1 text-xs text-cream/55">Em caso de emergência, ligue:</p>
+              <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-2.5">
+                {emergencyContacts.map((c) => (
+                  <a key={c.num} href={`tel:${c.num}`} className="flex items-baseline gap-1.5">
+                    <span className="font-display text-lg leading-none text-cream">{c.num}</span>
+                    <span className="text-[0.7rem] text-cream/55">{c.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
             <p className="text-sm text-cream/60">© {new Date().getFullYear()} — Todos os direitos reservados</p>
           </div>
           <div className="hidden md:block">
@@ -479,13 +495,27 @@ function Home() {
               <div className="md:col-span-3">
                 <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-cream/50">Atendimento</p>
                 <ul className="mt-4 space-y-2 text-sm text-cream/75">
-                  <li>Seg a sex, 8h às 19h</li>
+                  <li>Seg a sex, 8h às 20h</li>
                   <li>Presencial e online</li>
                   <li>Sessões de 50 minutos</li>
                 </ul>
               </div>
             </div>
-            <div className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-cream/15 pt-5 text-xs text-cream/50">
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-cream/15 bg-cream/[0.04] px-5 py-4">
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-clay">É urgente?</p>
+                <p className="mt-1 text-sm text-cream/60">Em caso de emergência, ligue:</p>
+              </div>
+              <div className="flex flex-wrap gap-x-7 gap-y-2">
+                {emergencyContacts.map((c) => (
+                  <a key={c.num} href={`tel:${c.num}`} className="group flex items-baseline gap-1.5">
+                    <span className="font-display text-xl leading-none text-cream transition-colors group-hover:text-clay">{c.num}</span>
+                    <span className="text-xs text-cream/55">{c.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-cream/15 pt-5 text-xs text-cream/50">
               <p>© {new Date().getFullYear()} {brand.name} — Todos os direitos reservados</p>
               <p>{therapists.map((t) => `${t.name} · ${t.crp}`).join("  |  ")}</p>
             </div>
