@@ -6,6 +6,7 @@ export const brand = {
   phoneLabel: "(61) 99402-6563",
   phoneRaw: "5561994026563",
   email: "serenitah.terapias@gmail.com",
+  instagram: "https://www.instagram.com/serenitahterapias",
   address:
     "Edifício Fusion Work e Live, SHN, Asa Norte, Brasília — DF, 70701-040",
   mark: img("image-6.png"),
@@ -21,6 +22,8 @@ export const brand = {
 
 export type TimelineItem = { period?: string; text: string };
 
+export type Social = { kind: "instagram" | "linkedin" | "tiktok" | "spotify"; label: string; href: string };
+
 export type Therapist = {
   slug: string;
   name: string;
@@ -34,6 +37,7 @@ export type Therapist = {
   trajectory?: { title: string; items: TimelineItem[] };
   services?: string[];
   languages?: string[];
+  socials?: Social[];
 };
 
 export const therapists: Therapist[] = [
@@ -44,6 +48,10 @@ export const therapists: Therapist[] = [
     crp: "CRP 01/20947",
     photo: img("image-3.png"),
     index: "01",
+    socials: [
+      { kind: "instagram", label: "Instagram", href: "https://www.instagram.com/psi.jessicalago" },
+      { kind: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/j%C3%A9ssica-priscila-lago-29211778" },
+    ],
     bio: [
       "Psicanalista com mais de 7 anos de experiência clínica, une a psicanálise ao apoio prático na orientação parental.",
       "Atende adolescentes e adultos e dedica atenção especial a mulheres em diferentes fases da vida, ao luto e à perda, à psicologia perinatal e aos estudos sobre relacionamentos.",
@@ -79,6 +87,12 @@ export const therapists: Therapist[] = [
     crp: "CRP 01/26397",
     photo: img("image-4.png"),
     index: "02",
+    socials: [
+      { kind: "instagram", label: "Instagram", href: "https://www.instagram.com/jenniferlago.psi" },
+      { kind: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@jenniferlago.psicologa" },
+      { kind: "spotify", label: "Podcast", href: "https://open.spotify.com/show/6lV1VYO55jbOGj0DbMpDde" },
+      { kind: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/jennifer-lago-629837200" },
+    ],
     bio: [
       "Psicóloga formada pelo UniCEUB em 2022, com formação básica em psicanálise pelo Corpo Freudiano de Brasília.",
       "Atende adolescentes e adultos em português, espanhol e inglês. Seu interesse de pesquisa está nos transtornos alimentares.",

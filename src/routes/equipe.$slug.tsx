@@ -1,7 +1,15 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { brand, therapists, whatsappLink, type TimelineItem } from "@/data/clinic";
+import { brand, therapists, whatsappLink, type Social, type TimelineItem } from "@/data/clinic";
 import { ScrollReveal } from "@/components/site/Reveal";
+
+export function SocialIcon({ kind }: { kind: Social["kind"] }) {
+  const common = { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.7, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
+  if (kind === "instagram") return (<svg {...common}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" /></svg>);
+  if (kind === "linkedin") return (<svg {...common}><path d="M7 10v7" /><circle cx="7" cy="7" r="0.7" /><path d="M11 17v-7M11 13a3 3 0 0 1 6 0v4" /></svg>);
+  if (kind === "tiktok") return (<svg {...common}><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5M14 4c.5 2.5 2.2 4 5 4.2" /></svg>);
+  return (<svg {...common}><circle cx="12" cy="12" r="9" /><path d="M7 9.5c3.5-1 7-.7 10 1M7.5 12.8c3-.8 6-.5 8.5 1M8.2 15.7c2.5-.6 5-.3 7 .8" /></svg>);
+}
 
 export const Route = createFileRoute("/equipe/$slug")({
   loader: ({ params }) => {
@@ -132,6 +140,15 @@ function TherapistPage() {
                 </a>
                 <a href="#formacao" className="btn-line-light max-md:hidden">Ver formação</a>
               </div>
+              {t.socials && (
+                <div className="enter mt-5 flex flex-wrap gap-2" style={rise(850)}>
+                  {t.socials.map((so) => (
+                    <a key={so.kind} href={so.href} target="_blank" rel="noreferrer" aria-label={`${so.label} de ${first}`} className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-3.5 py-2 text-[0.8rem] text-cream/85 transition-colors hover:bg-cream hover:text-coffee">
+                      <SocialIcon kind={so.kind} /> {so.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

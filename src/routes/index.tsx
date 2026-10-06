@@ -453,6 +453,9 @@ function Home() {
           <div className="flex flex-col items-center gap-3 text-center md:hidden">
             <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
             <span className="font-display text-xl">{brand.name}</span>
+            <a href={brand.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-4 py-2 text-sm text-cream/85">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" /></svg> @serenitahterapias
+            </a>
             <div className="mt-1 w-full max-w-[19rem] rounded-2xl border border-cream/15 bg-cream/[0.06] px-4 py-3.5">
               <p className="font-mono text-[0.66rem] uppercase tracking-[0.18em] text-clay">É urgente?</p>
               <p className="mt-1 text-xs text-cream/55">Em caso de emergência, ligue:</p>
@@ -490,6 +493,7 @@ function Home() {
                   <li><a href={whatsappLink("Olá! Vim pelo site da Serenitah.")} target="_blank" rel="noreferrer" className="transition-colors hover:text-cream">WhatsApp {brand.phoneLabel}</a></li>
                   <li><a href={`mailto:${brand.email}`} className="break-all transition-colors hover:text-cream">{brand.email}</a></li>
                   <li>{brand.address}</li>
+                  <li><a href={brand.instagram} target="_blank" rel="noreferrer" className="transition-colors hover:text-cream">Instagram @serenitahterapias</a></li>
                 </ul>
               </div>
               <div className="md:col-span-3">
