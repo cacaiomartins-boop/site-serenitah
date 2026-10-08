@@ -9,15 +9,32 @@ export const brand = {
   instagram: "https://www.instagram.com/serenitahterapias",
   address:
     "Edifício Fusion Work e Live, SHN, Asa Norte, Brasília — DF, 70701-040",
-  mark: img("image-6.png"),
-  room: img("image-2.png"),
-  session: img("image.png"),
-  teamOffice: img("serenitah-equipe-consultorio.png"),
-  teamMeeting: img("serenitah-equipe-reuniao.png"),
-  teamPhoto: img("serenitah-equipe-foto.jpg"),
-  teamSession: img("serenitah-equipe-sessao.jpg"),
-  teamLaptop: img("serenitah-equipe-laptop.jpg"),
-  teamMap: img("serenitah-equipe-mapa.jpg"),
+  mark: img("marca-serenitah.webp"),
+  room: img("hero-ambiente.webp"),
+  session: img("sessao-atendimento.webp"),
+  teamPhoto: img("equipe-corredor.webp"),
+  teamSession: img("equipe-conversa.webp"),
+  teamLaptop: img("equipe-reuniao.webp"),
+  teamMap: img("equipe-sala.webp"),
+};
+
+// Dimensões reais das imagens (evita deslocamento de layout)
+const imgDims: Record<string, [number, number]> = {
+  "/img/hero-ambiente.webp": [1024, 683],
+  "/img/sessao-atendimento.webp": [1024, 683],
+  "/img/equipe-jessica.webp": [990, 1024],
+  "/img/equipe-jennifer.webp": [990, 1024],
+  "/img/equipe-giovanna.webp": [990, 1024],
+  "/img/marca-serenitah.webp": [256, 256],
+  "/img/equipe-corredor.webp": [1100, 945],
+  "/img/equipe-conversa.webp": [1100, 661],
+  "/img/equipe-reuniao.webp": [1100, 733],
+  "/img/equipe-sala.webp": [1100, 733],
+};
+
+export const imgSize = (src: string) => {
+  const [width, height] = imgDims[src] ?? [0, 0];
+  return width ? { width, height } : {};
 };
 
 export type TimelineItem = { period?: string; text: string };
@@ -46,7 +63,7 @@ export const therapists: Therapist[] = [
     name: "Jéssica Priscila Lago",
     role: "Psicanalista",
     crp: "CRP 01/20947",
-    photo: img("image-3.png"),
+    photo: img("equipe-jessica.webp"),
     index: "01",
     socials: [
       { kind: "instagram", label: "Instagram", href: "https://www.instagram.com/psi.jessicalago" },
@@ -85,7 +102,7 @@ export const therapists: Therapist[] = [
     name: "Jennifer Patrícia Kuhn Lago",
     role: "Psicanalista",
     crp: "CRP 01/26397",
-    photo: img("image-4.png"),
+    photo: img("equipe-jennifer.webp"),
     index: "02",
     socials: [
       { kind: "instagram", label: "Instagram", href: "https://www.instagram.com/jenniferlago.psi" },
@@ -117,7 +134,7 @@ export const therapists: Therapist[] = [
     name: "Giovanna Alves Campos",
     role: "Psicanalista",
     crp: "CRP 01/26138",
-    photo: img("image-5.png"),
+    photo: img("equipe-giovanna.webp"),
     index: "03",
     bio: [
       "Atende adolescentes, adultos e idosos, com uma abordagem humanizada e integrativa. Realiza atendimentos domiciliares, com foco na saúde mental na terceira idade.",
@@ -247,5 +264,5 @@ export function isWithinHours(d = new Date()) {
   const br = new Date(utc - 3 * 3600000);
   const day = br.getDay();
   const hour = br.getHours();
-  return day >= 1 && day <= 5 && hour >= 8 && hour < 19;
+  return day >= 1 && day <= 5 && hour >= 8 && hour < 20;
 }

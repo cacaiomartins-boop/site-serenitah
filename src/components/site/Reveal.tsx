@@ -78,7 +78,7 @@ export function ScrollReveal() {
 
     if (reduce || !("IntersectionObserver" in window)) {
       els.forEach((el) => {
-        el.dataset.in = "true";
+        el.dataset["in"] = "true";
       });
     } else {
       io = new IntersectionObserver(
@@ -86,13 +86,13 @@ export function ScrollReveal() {
           entries.forEach((en) => {
             if (!en.isIntersecting) return;
             const el = en.target as HTMLElement;
-            el.dataset.in = "true";
+            el.dataset["in"] = "true";
             io?.unobserve(el);
             const delay = parseInt(el.style.getPropertyValue("--d")) || 0;
             // depois da animação, devolve o elemento ao estilo normal (hover, etc.)
             window.setTimeout(() => {
-              delete el.dataset.reveal;
-              delete el.dataset.in;
+              delete el.dataset["reveal"];
+              delete el.dataset["in"];
             }, 1100 + delay);
           });
         },

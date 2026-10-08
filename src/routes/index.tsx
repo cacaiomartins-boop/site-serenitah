@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   brand,
   chapters,
+  imgSize,
   isWithinHours,
   services,
   therapists,
@@ -13,54 +14,17 @@ import { Reveal, ReadingReveal, ScrollReveal } from "@/components/site/Reveal";
 import { ProcessLine } from "@/components/site/ProcessLine";
 import { Faq } from "@/components/site/Faq";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
+import { homeDescription, homeTitle, organizationSchema, seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      {
-        title: "Serenitah Terapias Integradas — Psicanálise em Brasília",
-      },
-      {
-        name: "description",
-        content:
-          "Clínica de psicanálise na Asa Norte, Brasília. Análise individual, casais, transtornos alimentares, home saúde e apoio à parentalidade. Presencial e online.",
-      },
-      {
-        property: "og:title",
-        content: "Serenitah Terapias Integradas — Psicanálise em Brasília",
-      },
-      {
-        property: "og:description",
-        content:
-          "Escuta profissional para reencontrar o equilíbrio. Atendimento presencial na Asa Norte e online.",
-      },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "MedicalBusiness",
-          name: brand.name,
-          telephone: "+556194026563",
-          email: brand.email,
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "SHN, Edifício Fusion Work e Live, Asa Norte",
-            addressLocality: "Brasília",
-            addressRegion: "DF",
-            postalCode: "70701-040",
-            addressCountry: "BR",
-          },
-          employee: therapists.map((t) => ({
-            "@type": "Person",
-            name: t.name,
-            jobTitle: t.role,
-          })),
-        }),
-      },
-    ],
-  }),
+  head: () => {
+    const seo = seoHead({ title: homeTitle, description: homeDescription, path: "/" });
+    return {
+      meta: seo.meta,
+      links: seo.links,
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(organizationSchema()) }],
+    };
+  },
   component: Home,
 });
 
@@ -144,6 +108,9 @@ function Home() {
           <img
             src={brand.room}
             alt=""
+            {...imgSize(brand.room)}
+            fetchPriority="high"
+            decoding="async"
             className="hero-zoom h-full w-full object-cover"
             style={{ filter: "sepia(0.22) saturate(0.9)" }}
           />
@@ -157,7 +124,7 @@ function Home() {
         <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col">
           <div style={d(0)} className="enter flex items-center justify-between gap-6 border-b border-cream/20 pb-4 md:pb-5">
             <a href="#" className="flex items-center gap-3">
-              <img src={brand.mark} alt="" className="h-11 w-11 rounded-full bg-cream/95 p-1.5 shadow-[0_6px_18px_-8px_rgba(0,0,0,0.6)]" />
+              <img src={brand.mark} alt="" {...imgSize(brand.mark)} className="h-11 w-11 rounded-full bg-cream/95 p-1.5 shadow-[0_6px_18px_-8px_rgba(0,0,0,0.6)]" />
               <span className="font-display text-xl leading-none text-cream">
                 Serenitah
                 <span className="block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-cream/60">
@@ -243,7 +210,7 @@ function Home() {
           <div className="lg:col-span-5">
             <SectionHead n="01" label="Quem somos" title={<>Estamos aqui para <em className="text-clay">cuidar</em> de você.</>} />
             <div data-reveal="scale" className="mt-5 overflow-hidden mask-organic md:mt-6">
-              <img src={brand.session} alt="Atendimento na Serenitah" loading="lazy" className="ken h-[210px] w-full object-cover object-[center_42%] md:h-[230px]" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
+              <img src={brand.session} alt="Atendimento na Serenitah" {...imgSize(brand.session)} loading="lazy" decoding="async" className="ken h-[210px] w-full object-cover object-[center_42%] md:h-[230px]" style={{ filter: "sepia(0.25) saturate(0.85)" }} />
             </div>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 lg:pt-10">
@@ -292,7 +259,7 @@ function Home() {
                 </div>
                 <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : "lg:col-start-8"}`}>
                   <div className={`overflow-hidden max-md:!rounded-none ${i % 2 ? "mask-organic" : "mask-arch"}`}>
-                    <img src={s.photo} alt={s.photoAlt} loading="lazy" className="ken h-[150px] w-full object-cover md:h-[225px]" style={{ filter: "sepia(0.18) saturate(0.9)", objectPosition: s.photoPosition }} />
+                    <img src={s.photo} alt={s.photoAlt} {...imgSize(s.photo)} loading="lazy" decoding="async" className="ken h-[150px] w-full object-cover md:h-[225px]" style={{ filter: "sepia(0.18) saturate(0.9)", objectPosition: s.photoPosition }} />
                   </div>
                 </div>
               </article>
@@ -327,7 +294,7 @@ function Home() {
           {therapists.map((t, i) => (
             <Link key={t.slug} data-reveal="up" style={d(i * 120)} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-2.5 md:p-3 transition-colors hover:bg-cream/10 md:w-[19vw] md:min-w-[15rem]">
               <div className="overflow-hidden rounded-2xl bg-sand mask-arch">
-                <img src={t.photo} alt={t.name} loading="lazy" draggable={false} className="ken h-[250px] w-full object-cover object-top md:h-[235px]" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
+                <img src={t.photo} alt={t.name} {...imgSize(t.photo)} loading="lazy" decoding="async" draggable={false} className="ken h-[250px] w-full object-cover object-top md:h-[235px]" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
               </div>
               <div className="flex items-end justify-between gap-4 px-2 pb-1 pt-4">
                 <div>
@@ -451,7 +418,7 @@ function Home() {
       <footer data-reveal="fade" className="bg-coffee px-5 pb-14 pt-7 text-cream md:px-12 md:pb-8 md:pt-12 lg:px-20">
         <div className="mx-auto max-w-[1440px]">
           <div className="flex flex-col items-center gap-3 text-center md:hidden">
-            <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
+            <img src={brand.mark} alt="Serenitah" {...imgSize(brand.mark)} loading="lazy" className="h-10 w-10 rounded-full bg-cream p-1" />
             <span className="font-display text-xl">{brand.name}</span>
             <a href={brand.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-4 py-2 text-sm text-cream/85">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.6" /></svg> @serenitahterapias
@@ -474,7 +441,7 @@ function Home() {
             <div className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-4">
                 <div className="flex items-center gap-3">
-                  <img src={brand.mark} alt="Serenitah" className="h-10 w-10 rounded-full bg-cream p-1" />
+                  <img src={brand.mark} alt="Serenitah" {...imgSize(brand.mark)} loading="lazy" className="h-10 w-10 rounded-full bg-cream p-1" />
                   <span className="font-display text-xl">{brand.name}</span>
                 </div>
                 <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">Clínica de psicanálise na Asa Norte, Brasília. Escuta profissional, com sigilo e sem pressa.</p>

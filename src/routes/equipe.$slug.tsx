@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { brand, therapists, whatsappLink, type Social, type TimelineItem } from "@/data/clinic";
+import { brand, imgSize, therapists, whatsappLink, type Social, type TimelineItem } from "@/data/clinic";
+import { personSchema, seoHead } from "@/lib/seo";
 import { ScrollReveal } from "@/components/site/Reveal";
 
 export function SocialIcon({ kind }: { kind: Social["kind"] }) {
@@ -27,14 +28,16 @@ export const Route = createFileRoute("/equipe/$slug")({
       };
     const { t } = loaderData;
     const title = `${t.name} — ${t.role} | Serenitah`;
-    const desc = t.bio[0];
+    const seo = seoHead({
+      title,
+      description: t.bio[0] ?? "",
+      path: `/equipe/${t.slug}`,
+      type: "profile",
+    });
     return {
-      meta: [
-        { title },
-        { name: "description", content: desc },
-        { property: "og:title", content: title },
-        { property: "og:description", content: desc },
-      ],
+      meta: seo.meta,
+      links: seo.links,
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(personSchema(t)) }],
     };
   },
   component: TherapistPage,
@@ -83,7 +86,7 @@ function TherapistPage() {
         <div className="relative mx-auto max-w-[1180px]">
           <header className="enter flex items-center justify-between gap-4 border-b border-cream/20 pb-4 md:pb-5">
             <Link to="/" data-cursor="cta" className="flex items-center gap-3">
-              <img src={brand.mark} alt="" className="h-10 w-10 rounded-full bg-cream/95 p-1.5" />
+              <img src={brand.mark} alt="" {...imgSize(brand.mark)} className="h-10 w-10 rounded-full bg-cream/95 p-1.5" />
               <span className="font-display text-lg leading-none">
                 Serenitah
                 <span className="block font-mono text-[0.6rem] uppercase tracking-[0.2em] text-cream/60">Terapias Integradas</span>
@@ -98,6 +101,9 @@ function TherapistPage() {
                 <img
                   src={t.photo}
                   alt={t.name}
+                  {...imgSize(t.photo)}
+                  fetchPriority="high"
+                  decoding="async"
                   className="h-[46vh] max-h-[520px] w-full object-cover object-top md:h-[58vh]"
                   style={{ filter: "sepia(0.2) saturate(0.9)" }}
                 />
@@ -249,7 +255,7 @@ function TherapistPage() {
                 style={rise(i * 100)}
                 className="group flex items-center gap-4 rounded-2xl border border-border bg-paper p-3 transition-colors hover:border-clay/60"
               >
-                <img src={o.photo} alt={o.name} className="h-16 w-16 shrink-0 rounded-xl object-cover object-top" />
+                <img src={o.photo} alt={o.name} {...imgSize(o.photo)} loading="lazy" decoding="async" className="h-16 w-16 shrink-0 rounded-xl object-cover object-top" />
                 <div className="min-w-0 flex-1">
                   <span className="font-mono text-xs text-clay">{o.index}</span>
                   <p className="font-display text-lg leading-tight">{o.name}</p>
