@@ -55,6 +55,7 @@ export type Therapist = {
   services?: string[];
   languages?: string[];
   socials?: Social[];
+  crpLink?: { label: string; href: string };
 };
 
 export const therapists: Therapist[] = [
@@ -65,6 +66,7 @@ export const therapists: Therapist[] = [
     crp: "CRP 01/20947",
     photo: img("equipe-jessica.webp"),
     index: "01",
+    crpLink: { label: "CRP DF 20947", href: "https://www.jessicalagopsi.com/#topo" },
     socials: [
       { kind: "instagram", label: "Instagram", href: "https://www.instagram.com/psi.jessicalago" },
       { kind: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/j%C3%A9ssica-priscila-lago-29211778" },
@@ -104,6 +106,7 @@ export const therapists: Therapist[] = [
     crp: "CRP 01/26397",
     photo: img("equipe-jennifer.webp"),
     index: "02",
+    crpLink: { label: "CRP 01/26397", href: "https://www.jenniferlago.com/#topo" },
     socials: [
       { kind: "instagram", label: "Instagram", href: "https://www.instagram.com/jenniferlago.psi" },
       { kind: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@jenniferlago.psicologa" },

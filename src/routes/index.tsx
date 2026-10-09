@@ -292,7 +292,8 @@ function Home() {
         </div>
         <div ref={teamRef} className="-mx-5 mt-6 flex snap-x snap-mandatory scroll-px-5 gap-6 overflow-x-auto px-5 pb-4 [scrollbar-width:none] max-md:gap-3 md:mx-0 md:mt-8 md:px-0 [&::-webkit-scrollbar]:hidden">
           {therapists.map((t, i) => (
-            <Link key={t.slug} data-reveal="up" style={d(i * 120)} to="/equipe/$slug" params={{ slug: t.slug }} className="group w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-2.5 md:p-3 transition-colors hover:bg-cream/10 md:w-[19vw] md:min-w-[15rem]">
+            <div key={t.slug} data-reveal="up" style={d(i * 120)} className="group w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-cream/15 bg-cream/5 p-2.5 md:p-3 transition-colors hover:bg-cream/10 md:w-[19vw] md:min-w-[15rem]">
+              <Link to="/equipe/$slug" params={{ slug: t.slug }} className="block">
               <div className="overflow-hidden rounded-2xl bg-sand mask-arch">
                 <img src={t.photo} alt={t.name} {...imgSize(t.photo)} loading="lazy" decoding="async" draggable={false} className="ken h-[250px] w-full object-cover object-top md:h-[235px]" style={{ filter: "sepia(0.2) saturate(0.9)" }} />
               </div>
@@ -304,7 +305,11 @@ function Home() {
                 </div>
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-cream/30 md:h-11 md:w-11 transition-all group-hover:bg-clay group-hover:border-clay">→</span>
               </div>
-            </Link>
+              </Link>
+              {t.crpLink && (
+                <a href={t.crpLink.href} target="_blank" rel="noopener noreferrer" className="mx-2 mb-1 mt-2 inline-block rounded-full border border-cream/25 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-cream/75 transition-colors hover:bg-cream hover:text-coffee">{t.crpLink.label}</a>
+              )}
+            </div>
           ))}
           {[0, 1].map((i) => (
             <div key={`soon-${i}`} data-reveal="up" style={d((therapists.length + i) * 120)} className="w-[66vw] max-w-[21rem] shrink-0 snap-start rounded-3xl border border-dashed border-cream/20 bg-cream/[0.03] p-2.5 md:w-[19vw] md:min-w-[15rem] md:p-3" aria-label="Nova profissional em breve">
